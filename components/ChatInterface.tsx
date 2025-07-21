@@ -19,11 +19,6 @@ interface ChatInterfaceProps {
 
 const personaButtons = [
   { 
-    text: "Choy", 
-    icon: Bot,
-    gradient: "from-blue-500/20 to-purple-500/20"
-  },
-  { 
     text: "Tony Stark", 
     icon: Zap,
     gradient: "from-yellow-500/20 to-red-500/20"

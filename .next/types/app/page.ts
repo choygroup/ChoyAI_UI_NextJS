@@ -1,4 +1,4 @@
-// File: /Users/macbookpr0/SN Mac Drive/5-WORKS/ChoyUI-jul21/ChoyAI_UI/app/page.tsx
+// File: D:\D-Programming Practice\Choy UI\ChoyAI_UI\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

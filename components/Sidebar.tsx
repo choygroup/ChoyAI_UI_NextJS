@@ -157,9 +157,9 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
           <TooltipTrigger asChild>
             <Button
               variant={isCurrentlyActive ? "secondary" : "ghost"}
-              className={`w-full justify-start text-left h-auto py-2 px-3 ${
-                isCurrentlyActive 
-                  ? "bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90" 
+              className={`w-full justify-start text-left h-auto py-2 px-3 transition-colors duration-200 ${
+                isCurrentlyActive
+                  ? "bg-sidebar-accent text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               }`}
               onClick={() => onNavigate(item)}
@@ -193,6 +193,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:relative md:z-0
         flex-shrink-0
+        overflow-x-hidden
       `}>
         <div className="flex h-full flex-col">
           {/* Header */}
@@ -214,7 +215,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
           </div>
 
           {/* Navigation */}
-          <div className="flex-1 overflow-y-auto py-2 min-h-0">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden py-2 min-h-0">
             {/* Core AI Section */}
             <div className="px-4">
               <div className="px-3 py-1.5 text-xs font-medium text-sidebar-foreground/70 uppercase tracking-wider">

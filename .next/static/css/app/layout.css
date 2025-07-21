@@ -1,6 +1,6 @@
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"app/layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /* cyrillic-ext */
 @font-face {
   font-family: '__Inter_e8ce0c';
@@ -1440,6 +1440,9 @@ video {
 .border-primary {
   border-color: var(--primary);
 }
+.border-sidebar-border {
+  border-color: var(--sidebar-border);
+}
 .border-transparent {
   border-color: transparent;
 }
@@ -1486,6 +1489,18 @@ video {
 .bg-secondary {
   background-color: var(--secondary);
 }
+.bg-sidebar {
+  background-color: var(--sidebar);
+}
+.bg-sidebar-accent {
+  background-color: var(--sidebar-accent);
+}
+.bg-sidebar-border {
+  background-color: var(--sidebar-border);
+}
+.bg-sidebar-primary {
+  background-color: var(--sidebar-primary);
+}
 .bg-transparent {
   background-color: transparent;
 }
@@ -1494,11 +1509,6 @@ video {
 }
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-.from-blue-500\/20 {
-  --tw-gradient-from: rgb(59 130 246 / 0.2) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(59 130 246 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 .from-foreground {
   --tw-gradient-from: var(--foreground) var(--tw-gradient-from-position);
@@ -1514,9 +1524,6 @@ video {
   --tw-gradient-from: rgb(234 179 8 / 0.2) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(234 179 8 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-.to-purple-500\/20 {
-  --tw-gradient-to: rgb(168 85 247 / 0.2) var(--tw-gradient-to-position);
 }
 .to-red-500\/20 {
   --tw-gradient-to: rgb(239 68 68 / 0.2) var(--tw-gradient-to-position);
@@ -1763,6 +1770,15 @@ video {
 .text-secondary-foreground {
   color: var(--secondary-foreground);
 }
+.text-sidebar-accent-foreground {
+  color: var(--sidebar-accent-foreground);
+}
+.text-sidebar-foreground {
+  color: var(--sidebar-foreground);
+}
+.text-sidebar-primary-foreground {
+  color: var(--sidebar-primary-foreground);
+}
 .text-transparent {
   color: transparent;
 }
@@ -1831,6 +1847,9 @@ video {
 }
 .ring-ring\/50 {
   --tw-ring-color: oklch(var(--ring) / 0.5);
+}
+.ring-sidebar-ring {
+  --tw-ring-color: var(--sidebar-ring);
 }
 .ring-offset-background {
   --tw-ring-offset-color: var(--background);
@@ -1974,7 +1993,7 @@ video {
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-size: 14px;
+  --font-size: 16px;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -2248,6 +2267,10 @@ html {
   background-color: var(--primary);
 }
 
+.hover\:bg-sidebar-accent:hover {
+  background-color: var(--sidebar-accent);
+}
+
 .hover\:text-accent-foreground:hover {
   color: var(--accent-foreground);
 }
@@ -2262,6 +2285,10 @@ html {
 
 .hover\:text-primary-foreground:hover {
   color: var(--primary-foreground);
+}
+
+.hover\:text-sidebar-accent-foreground:hover {
+  color: var(--sidebar-accent-foreground);
 }
 
 .hover\:underline:hover {
@@ -2288,6 +2315,11 @@ html {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.hover\:after\:bg-sidebar-border:hover::after {
+  content: var(--tw-content);
+  background-color: var(--sidebar-border);
 }
 
 .focus\:z-10:focus {
@@ -2389,6 +2421,14 @@ html {
   --tw-ring-offset-width: 1px;
 }
 
+.active\:bg-sidebar-accent:active {
+  background-color: var(--sidebar-accent);
+}
+
+.active\:text-sidebar-accent-foreground:active {
+  color: var(--sidebar-accent-foreground);
+}
+
 .disabled\:pointer-events-none:disabled {
   pointer-events: none;
 }
@@ -2407,6 +2447,10 @@ html {
 
 .group\/menu-item:hover .group-hover\/menu-item\:opacity-100 {
   opacity: 1;
+}
+
+.peer\/menu-button:hover ~ .peer-hover\/menu-button\:text-sidebar-accent-foreground {
+  color: var(--sidebar-accent-foreground);
 }
 
 .peer:disabled ~ .peer-disabled\:cursor-not-allowed {
@@ -2708,6 +2752,10 @@ html {
   border-color: var(--primary);
 }
 
+.data-\[active\=true\]\:bg-sidebar-accent[data-active="true"] {
+  background-color: var(--sidebar-accent);
+}
+
 .data-\[selected\=true\]\:bg-accent[data-selected="true"] {
   background-color: var(--accent);
 }
@@ -2746,6 +2794,10 @@ html {
 
 .data-\[active\=true\]\:text-accent-foreground[data-active="true"] {
   color: var(--accent-foreground);
+}
+
+.data-\[active\=true\]\:text-sidebar-accent-foreground[data-active="true"] {
+  color: var(--sidebar-accent-foreground);
 }
 
 .data-\[error\=true\]\:text-destructive[data-error="true"] {
@@ -3036,6 +3088,14 @@ html {
   background-color: var(--accent);
 }
 
+.data-\[state\=open\]\:hover\:bg-sidebar-accent:hover[data-state="open"] {
+  background-color: var(--sidebar-accent);
+}
+
+.data-\[state\=open\]\:hover\:text-sidebar-accent-foreground:hover[data-state="open"] {
+  color: var(--sidebar-accent-foreground);
+}
+
 .data-\[active\=true\]\:focus\:bg-accent:focus[data-active="true"] {
   background-color: var(--accent);
 }
@@ -3147,6 +3207,10 @@ html {
   border-left-width: 1px;
 }
 
+.group[data-variant="floating"] .group-data-\[variant\=floating\]\:border-sidebar-border {
+  border-color: var(--sidebar-border);
+}
+
 .group\/navigation-menu[data-viewport="false"] .group-data-\[viewport\=false\]\/navigation-menu\:bg-popover {
   background-color: var(--popover);
 }
@@ -3183,6 +3247,10 @@ html {
 .group[data-collapsible="offcanvas"] .group-data-\[collapsible\=offcanvas\]\:after\:left-full::after {
   content: var(--tw-content);
   left: 100%;
+}
+
+.group[data-collapsible="offcanvas"] .hover\:group-data-\[collapsible\=offcanvas\]\:bg-sidebar:hover {
+  background-color: var(--sidebar);
 }
 
 .group\/navigation-menu[data-viewport="false"] .group-data-\[viewport\=false\]\/navigation-menu\:data-\[state\=open\]\:animate-in[data-state="open"] {
@@ -3231,6 +3299,10 @@ html {
 
 .peer\/menu-button[data-size="sm"] ~ .peer-data-\[size\=sm\]\/menu-button\:top-1 {
   top: 0.25rem;
+}
+
+.peer\/menu-button[data-active="true"] ~ .peer-data-\[active\=true\]\/menu-button\:text-sidebar-accent-foreground {
+  color: var(--sidebar-accent-foreground);
 }
 
 .dark\:border-input:is(.dark *) {
@@ -3494,6 +3566,10 @@ html {
 
 .\[\&\>svg\]\:text-muted-foreground>svg {
   color: var(--muted-foreground);
+}
+
+.\[\&\>svg\]\:text-sidebar-accent-foreground>svg {
+  color: var(--sidebar-accent-foreground);
 }
 
 .\[\&\>tr\]\:last\:border-b-0:last-child>tr {
