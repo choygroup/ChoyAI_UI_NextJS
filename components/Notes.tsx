@@ -101,7 +101,7 @@ export function Notes() {
         <div className="p-4 border-b border-slate-800">
           <Input placeholder="Search" className="bg-black border-slate-700 text-white" />
           <Button className="w-full mt-3" variant="secondary">
-            <Plus className="mr-2 size-4" /> New content
+            <Plus className="mr-2 size-4" /> New note
           </Button>
         </div>
         <div className="p-4 border-b border-slate-800">
@@ -132,10 +132,6 @@ export function Notes() {
         <div className="flex items-center justify-between p-4 border-b border-slate-800 bg-background">
           <div className="flex items-center space-x-3">
             <h1 className="text-2xl font-bold text-white">Notes</h1>
-            <div className="ml-4 flex items-center space-x-2 text-sm">
-              <Button variant="ghost" className="px-2 py-1 text-white/80 border-b-2 border-blue-500 rounded-none">Dashboard</Button>
-              <Button variant="ghost" className="px-2 py-1 text-white/80">All</Button>
-            </div>
           </div>
           <div className="flex items-center space-x-2">
             <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')}><List className="size-5" /></Button>

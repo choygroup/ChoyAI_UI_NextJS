@@ -19,54 +19,49 @@ const config = {
     },
     extend: {
       colors: {
-        border: "var(--border)",
-        input: "var(--input)",
-        ring: "oklch(var(--ring) / <alpha-value>)",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
-        },
-        destructive: {
-          DEFAULT: "var(--destructive)",
-          foreground: "var(--destructive-foreground)",
-        },
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
-        accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
+        background: 'var(--bg-primary)',
+        foreground: 'var(--text-primary)',
+        card: {
+          DEFAULT: 'var(--card-bg)',
+          foreground: 'var(--text-primary)',
         },
         popover: {
-          DEFAULT: "var(--popover)",
-          foreground: "var(--popover-foreground)",
+          DEFAULT: 'var(--popover-bg)',
+          foreground: 'var(--text-primary)',
         },
-        card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
+        primary: {
+          DEFAULT: 'var(--btn-primary-bg)',
+          foreground: 'var(--btn-primary-text)',
         },
-        sidebar: {
-          DEFAULT: "var(--sidebar)",
-          foreground: "var(--sidebar-foreground)",
-          primary: "var(--sidebar-primary)",
-          "primary-foreground": "var(--sidebar-primary-foreground)",
-          accent: "var(--sidebar-accent)",
-          "accent-foreground": "var(--sidebar-accent-foreground)",
-          border: "var(--sidebar-border)",
-          ring: "var(--sidebar-ring)",
+        secondary: {
+          DEFAULT: 'var(--btn-secondary-bg)',
+          foreground: 'var(--btn-secondary-text)',
         },
+        destructive: {
+          DEFAULT: 'var(--btn-danger-bg)',
+          foreground: 'var(--btn-danger-text)',
+        },
+        muted: {
+          DEFAULT: 'var(--text-muted)',
+          foreground: 'var(--text-muted)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent-bg)',
+          foreground: 'var(--text-primary)',
+        },
+        border: 'var(--border-default)',
+        input: 'var(--input-border)',
+        ring: 'var(--border-focus)',
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
       },
       keyframes: {
         "accordion-down": {
@@ -89,6 +84,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

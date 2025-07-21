@@ -159,11 +159,11 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
         <Tooltip key={item.label}>
           <TooltipTrigger asChild>
             <Button
-              variant={isCurrentlyActive ? "secondary" : "ghost"}
+              variant="ghost"
               className={`w-full justify-start text-left h-auto py-2 px-3 transition-colors duration-200 ${
                 isCurrentlyActive
-                  ? "bg-sidebar-accent text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  ? "bg-accent text-accent-foreground"
+                  : "hover:bg-accent hover:text-accent-foreground"
               }`}
               onClick={() => onNavigate(item)}
             >
@@ -171,7 +171,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
               <span className="text-sm">{item.label}</span>
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="right" className="bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-border">
+          <TooltipContent side="right" className="bg-accent text-accent-foreground border-border">
             <p>{item.tooltip}</p>
           </TooltipContent>
         </Tooltip>
@@ -191,7 +191,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
       
       {/* Sidebar */}
       <div className={`
-        fixed left-0 top-0 z-50 h-full w-80 bg-sidebar border-r border-sidebar-border
+        fixed left-0 top-0 z-50 h-full w-80 bg-gradient-to-b from-bg-secondary to-bg-primary border-r border-border
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:relative md:z-0
@@ -200,12 +200,12 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
       `}>
         <div className="flex h-full flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-sidebar-border flex-shrink-0">
+          <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
             <div className="flex items-center space-x-3 min-w-0">
-              <div className="size-8 bg-sidebar-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                <MessageSquare className="size-4 text-sidebar-primary-foreground" />
+              <div className="size-8 bg-accent-secondary rounded-lg flex items-center justify-center flex-shrink-0">
+                <MessageSquare className="size-4 text-accent-secondary-text" />
               </div>
-              <span className="text-sidebar-foreground font-semibold">Choy AI</span>
+              <span className="text-foreground font-semibold">Choy AI</span>
             </div>
             <Button
               variant="ghost"

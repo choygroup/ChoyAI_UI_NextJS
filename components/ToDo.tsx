@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Checkbox } from "./ui/checkbox";
+import { Input } from "./ui/input";
 import { Menu, Plus, MoreHorizontal, Archive, Search, Inbox, Calendar, CheckCircle, MoreVertical, ChevronDown, Bell } from "lucide-react";
 
 // --- MOCK DATA ---
@@ -12,7 +13,6 @@ interface Task {
 }
 
 const topNavItems = [
-    { icon: Search, label: "Search" },
     { icon: Inbox, label: "Inbox" },
     { icon: Calendar, label: "Today", count: 1 },
     { icon: Calendar, label: "Upcoming" },
@@ -21,7 +21,7 @@ const topNavItems = [
 ];
 
 const projects = [
-    { name: "TO DO", count: 12, active: true },
+    { name: "To Do", count: 12, active: true },
     { name: "CART", count: 17 },
     { name: "GOALS", count: 7 },
     { name: "VISION", count: 5 },
@@ -60,13 +60,14 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
   return (
     <div className="flex-1 flex h-full bg-background text-foreground">
         {/* To-Do Sidebar */}
-        <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col">
-            <nav className="flex-1 p-4 space-y-4 overflow-y-auto pt-6">
-                <Button variant="destructive" className="w-full">
-                    <Plus className="mr-2 size-4" /> Add task
-                </Button>
-
-                <ul className="space-y-1 pt-4">
+        <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col p-4 space-y-4">
+            <Input placeholder="Search" className="bg-background border-border w-full" />
+            <Button variant="secondary" className="w-full">
+                <Plus className="mr-2 size-4" /> Add task
+            </Button>
+            
+            <nav className="flex-1 space-y-4 overflow-y-auto pt-4">
+                <ul className="space-y-1">
                     {topNavItems.map(item => (
                         <li key={item.label}>
                             <a href="#" className="flex items-center space-x-3 text-gray-300 hover:bg-accent/10 px-2 py-1.5 rounded-md text-sm">
@@ -108,7 +109,7 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
                     >
                         <Menu className="size-4" />
                     </Button>
-                    <h1 className="text-xl font-bold">TO DO</h1>
+                    <h1 className="text-xl font-bold">Task</h1>
                 </div>
                 <div className="flex items-center space-x-2">
                     <Button variant="ghost" size="sm" className="text-muted-foreground">
