@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Sidebar } from "@/components/Sidebar";
 import { ChatInterface } from "@/components/ChatInterface";
+import { ToDo } from "@/components/ToDo";
 import { ComingSoon } from "@/components/ComingSoon";
 
 export default function HomePage() {
@@ -16,7 +17,9 @@ export default function HomePage() {
 
   const handleNavigation = (item: any) => {
     setSelectedItem(item);
-    if (item.comingSoon) {
+    if (item.label === "Tasks / To-Do") {
+      setCurrentView("todo");
+    } else if (item.comingSoon) {
       setCurrentView("coming-soon");
     } else {
       setCurrentView("chat");
@@ -35,6 +38,25 @@ export default function HomePage() {
     }
   };
 
+  const renderContent = () => {
+    switch (currentView) {
+      case "chat":
+        return <ChatInterface onMenuToggle={toggleSidebar} />;
+      case "todo":
+        return <ToDo onMenuToggle={toggleSidebar} />;
+      case "coming-soon":
+        return (
+          <ComingSoon 
+            onMenuToggle={toggleSidebar}
+            title={selectedItem.label}
+            description={selectedItem.tooltip}
+          />
+        );
+      default:
+        return <ChatInterface onMenuToggle={toggleSidebar} />;
+    }
+  };
+
   return (
     <div className="dark">
       <div className="flex h-screen bg-background text-foreground overflow-hidden">
@@ -49,15 +71,7 @@ export default function HomePage() {
         
         {/* Main Content */}
         <div className="flex-1 flex flex-col min-w-0">
-          {currentView === "chat" ? (
-            <ChatInterface onMenuToggle={toggleSidebar} />
-          ) : (
-            <ComingSoon 
-              onMenuToggle={toggleSidebar}
-              title={selectedItem.label}
-              description={selectedItem.tooltip}
-            />
-          )}
+          {renderContent()}
         </div>
       </div>
     </div>

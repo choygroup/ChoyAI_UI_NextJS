@@ -48,7 +48,7 @@ const productivityItems = [
     label: "Tasks / To-Do", 
     href: "#", 
     tooltip: "Google Tasks",
-    comingSoon: true
+    comingSoon: false
   },
   { 
     icon: StickyNote, 
@@ -150,7 +150,8 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
 
   const renderNavItems = (items: any[]) => {
     return items.map((item) => {
-      const isCurrentlyActive = currentView === "chat" && item.label === "Chat / Talk";
+      const isCurrentlyActive = (currentView === "chat" && item.label === "Chat / Talk") || 
+                                (currentView === "todo" && item.label === "Tasks / To-Do");
       
       return (
         <Tooltip key={item.label}>
