@@ -69,7 +69,7 @@ const productivityItems = [
     label: "News", 
     href: "#", 
     tooltip: "Latest category-wise news + AI summarizer",
-    comingSoon: true
+    comingSoon: false
   },
   { 
     icon: Mail, 
@@ -151,7 +151,8 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
   const renderNavItems = (items: any[]) => {
     return items.map((item) => {
       const isCurrentlyActive = (currentView === "chat" && item.label === "Chat / Talk") || 
-                                (currentView === "todo" && item.label === "Tasks / To-Do");
+                                (currentView === "todo" && item.label === "Tasks / To-Do") ||
+                                (currentView === "news" && item.label === "News");
       
       return (
         <Tooltip key={item.label}>
