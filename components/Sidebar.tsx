@@ -32,6 +32,13 @@ const coreAIItems = [
     active: true,
     comingSoon: false
   },
+  {
+    icon: StickyNote, // Reuse or pick a suitable icon
+    label: "Notes",
+    href: "#",
+    tooltip: "Your notes and knowledge base",
+    comingSoon: false
+  },
 ];
 
 // Productivity Section
@@ -152,7 +159,8 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
     return items.map((item) => {
       const isCurrentlyActive = (currentView === "chat" && item.label === "Chat / Talk") || 
                                 (currentView === "todo" && item.label === "Tasks / To-Do") ||
-                                (currentView === "news" && item.label === "News");
+                                (currentView === "news" && item.label === "News") ||
+                                (currentView === "notes" && item.label === "Notes");
       
       return (
         <Tooltip key={item.label}>

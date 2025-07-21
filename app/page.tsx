@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { ChatInterface } from "@/components/ChatInterface";
 import { ToDo } from "@/components/ToDo";
 import { News } from "@/components/News";
+import { Notes } from "@/components/Notes";
 import { ComingSoon } from "@/components/ComingSoon";
 
 export default function HomePage() {
@@ -22,6 +23,8 @@ export default function HomePage() {
       setCurrentView("todo");
     } else if (item.label === "News") {
       setCurrentView("news");
+    } else if (item.label === "Notes") {
+      setCurrentView("notes");
     } else if (item.comingSoon) {
       setCurrentView("coming-soon");
     } else {
@@ -49,6 +52,8 @@ export default function HomePage() {
         return <ToDo onMenuToggle={toggleSidebar} />;
       case "news":
         return <News onMenuToggle={toggleSidebar} />;
+      case "notes":
+        return <Notes />;
       case "coming-soon":
         return (
           <ComingSoon 

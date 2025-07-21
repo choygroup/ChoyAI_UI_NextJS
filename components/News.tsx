@@ -81,7 +81,7 @@ export function News({ onMenuToggle }: NewsProps) {
     <div className="flex-1 flex flex-col h-full bg-background text-gray-300 font-sans overflow-y-auto">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
-        <div className="flex items-center justify-between p-4 border-b border-slate-800">
+        <div className="flex items-center justify-between p-4">
           <div className="flex items-center space-x-2">
             <Button variant="ghost" size="icon" onClick={onMenuToggle} className="md:hidden">
               <Menu />
@@ -118,6 +118,26 @@ export function News({ onMenuToggle }: NewsProps) {
             </div>
           </div>
         </div>
+
+        {/* Navigation Bar */}
+        <nav className="border-y border-slate-800">
+            <div className="px-4 flex items-center space-x-6 text-sm text-gray-400 overflow-x-auto">
+              {navLinks.map((link) => (
+                <a
+                  href="#"
+                  key={link}
+                  className={`py-2 hover:text-white transition-colors relative whitespace-nowrap ${
+                    link === "Home" ? "text-white" : ""
+                  }`}
+                >
+                  {link}
+                  {link === "Home" && (
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white rounded-full"></span>
+                  )}
+                </a>
+              ))}
+            </div>
+        </nav>
 
         {/* Crypto Ticker */}
         <div className="bg-slate-950/50 flex items-center p-2 border-b border-slate-800 overflow-hidden">
