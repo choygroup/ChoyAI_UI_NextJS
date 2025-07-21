@@ -32,13 +32,6 @@ const coreAIItems = [
     active: true,
     comingSoon: false
   },
-  {
-    icon: StickyNote, // Reuse or pick a suitable icon
-    label: "Notes",
-    href: "#",
-    tooltip: "Your notes and knowledge base",
-    comingSoon: false
-  },
 ];
 
 // Productivity Section
@@ -54,14 +47,14 @@ const productivityItems = [
     icon: CheckSquare, 
     label: "Tasks / To-Do", 
     href: "#", 
-    tooltip: "Google Tasks",
+    tooltip: "Tasks",
     comingSoon: false
   },
   { 
     icon: StickyNote, 
     label: "Notes", 
     href: "#", 
-    tooltip: "Google Keep",
+    tooltip: "Notes",
     comingSoon: true
   },
   { 
