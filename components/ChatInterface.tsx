@@ -1,24 +1,12 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Menu, Send, Paperclip, Search } from "lucide-react";
+import { Card } from "./ui/card";
+import { Menu, Send, Paperclip, Search, Sparkles } from "lucide-react";
 
 interface ChatInterfaceProps {
   onMenuToggle: () => void;
 }
-
-const personaButtons = [
-  { 
-    text: "Tony Stark", 
-    icon: Zap,
-    gradient: "from-yellow-500/20 to-red-500/20"
-  },
-  { 
-    text: "Rose Dawson", 
-    icon: Heart,
-    gradient: "from-pink-500/20 to-rose-500/20"
-  },
-];
 
 export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
   const [message, setMessage] = useState("");
@@ -29,10 +17,6 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
       console.log("Sending message:", message);
       setMessage("");
     }
-  };
-
-  const handlePersonaClick = (persona: string) => {
-    setMessage(`Talk to ${persona}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -111,26 +95,6 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
             </Button>
           </div>
         </Card>
-
-        {/* Persona Buttons */}
-        <div className="flex flex-wrap gap-3 justify-center max-w-4xl">
-          {personaButtons.map((persona, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              onClick={() => handlePersonaClick(persona.text)}
-              className={`
-                relative overflow-hidden border-border/50 hover:border-border
-                bg-gradient-to-r ${persona.gradient}
-                hover:shadow-lg transition-all duration-200
-                backdrop-blur-sm
-              `}
-            >
-              <persona.icon className="mr-2 size-4" />
-              {persona.text}
-            </Button>
-          ))}
-        </div>
       </div>
     </div>
   );
