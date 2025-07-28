@@ -1,48 +1,24 @@
-# ChoyAI UI
+# Choy AI UI/UX
 
 This is a collection of reusable UI components built with React, Next.js, and Tailwind CSS. It's designed to be a starting point for building modern, accessible, and customizable user interfaces.
 
 ## Tech Stack
 
-*   **Framework:** [Next.js](https://nextjs.org/)
-*   **UI:** [React](https://reactjs.org/)
-*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-*   **Language:** [TypeScript](https://www.typescriptlang.org/)
-*   **Component Library:** [Radix UI](https://www.radix-ui.com/)
+* **Framework:** [Next.js](https://nextjs.org/)
+* **UI:** [React](https://reactjs.org/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Component Library:** [Radix UI](https://www.radix-ui.com/)
 
 ## Project Structure
 
 The project is organized as follows:
 
-*   `app/`: Contains the application's pages and layouts.
-*   `components/`: Contains the reusable UI components.
-    *   `ui/`: Contains the individual UI components.
-*   `hooks/`: Contains custom React hooks.
-*   `public/`: Contains static assets.
-
-## Getting Started
-
-To get started with this project, follow these steps:
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/your-username/choyai-ui.git
-    ```
-
-2.  **Install the dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Start the development server:**
-
-    ```bash
-    npm run dev
-    ```
-
-    This will start the development server on `http://localhost:3000`.
+- `app/`: Contains the application's pages and layouts.
+- `components/`: Contains the reusable UI components.
+    - `ui/`: Contains the individual UI components.
+- `hooks/`: Contains custom React hooks.
+- `public/`: Contains static assets.
 
 ## Available Components
 
@@ -133,6 +109,5 @@ In the project directory, you can run the following scripts:
 *   `tailwindcss-animate`: ^1.0.7
 *   `typescript`: ^5
 
-## Contributing
-
-Contributions are welcome! Please feel free to open an issue or submit a pull request.
+## Future Work
+- Plans are underway to reintroduce persona buttons with improved functionality based on ongoing user feedback and testing.
