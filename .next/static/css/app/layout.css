@@ -1114,9 +1114,6 @@ video {
 .max-w-2xl {
   max-width: 42rem;
 }
-.max-w-4xl {
-  max-width: 56rem;
-}
 .max-w-\[calc\(100\%-2rem\)\] {
   max-width: calc(100% - 2rem);
 }
@@ -1620,22 +1617,6 @@ video {
   --tw-gradient-from: var(--text-primary) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-.from-pink-500\/20 {
-  --tw-gradient-from: rgb(236 72 153 / 0.2) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(236 72 153 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-.from-yellow-500\/20 {
-  --tw-gradient-from: rgb(234 179 8 / 0.2) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(234 179 8 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-.to-red-500\/20 {
-  --tw-gradient-to: rgb(239 68 68 / 0.2) var(--tw-gradient-to-position);
-}
-.to-rose-500\/20 {
-  --tw-gradient-to: rgb(244 63 94 / 0.2) var(--tw-gradient-to-position);
 }
 .bg-clip-text {
   -webkit-background-clip: text;
@@ -2366,9 +2347,6 @@ video {
 .focus-within\:z-20:focus-within {
   z-index: 20;
 }
-.hover\:border-border:hover {
-  border-color: var(--border-default);
-}
 .hover\:bg-accent:hover {
   background-color: var(--accent-bg);
 }
@@ -2422,11 +2400,6 @@ video {
 .hover\:shadow-\[0_0_0_1px_hsl\(var\(--sidebar-accent\)\)\]:hover {
   --tw-shadow: 0 0 0 1px hsl(var(--sidebar-accent));
   --tw-shadow-colored: 0 0 0 1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.hover\:shadow-lg:hover {
-  --tw-shadow: var(--shadow-lg);
-  --tw-shadow-colored: var(--shadow-lg);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .hover\:ring-4:hover {
