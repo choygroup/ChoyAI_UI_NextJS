@@ -97,46 +97,46 @@ export function Notes() {
   return (
     <div className="flex h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <aside className="w-64 bg-background border-r border-slate-800 flex flex-col">
-        <div className="p-4 border-b border-slate-800">
-          <Input placeholder="Search" className="bg-black border-slate-700 text-white" />
-          <Button className="w-full mt-3" variant="secondary">
+      <aside className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col">
+        <div className="p-4 border-b border-zinc-800">
+          <Input placeholder="Search" className="bg-zinc-900 border-zinc-700 text-white" />
+          <Button className="w-full mt-3 bg-zinc-800 hover:bg-zinc-700 text-white border-zinc-700" variant="secondary">
             <Plus className="mr-2 size-4" /> New note
           </Button>
         </div>
-        <div className="p-4 border-b border-slate-800">
-          <div className="text-xs text-gray-400 mb-2">Pinned</div>
+        <div className="p-4 border-b border-zinc-800">
+          <div className="text-xs text-zinc-400 mb-2">Pinned</div>
           <ul className="space-y-1">
             {pinned.map((item) => (
-              <li key={item} className="text-sm text-white/90 hover:bg-black rounded px-2 py-1 cursor-pointer">{item}</li>
+              <li key={item} className="text-sm text-white/90 hover:bg-zinc-800 rounded px-2 py-1 cursor-pointer">{item}</li>
             ))}
           </ul>
         </div>
         <div className="p-4 flex-1 overflow-y-auto">
-          <div className="text-xs text-gray-400 mb-2">Objects</div>
+          <div className="text-xs text-zinc-400 mb-2">Objects</div>
           <ul className="space-y-1">
             {objects.map((item) => (
-              <li key={item} className="text-sm text-white/90 hover:bg-black rounded px-2 py-1 cursor-pointer flex items-center">
+              <li key={item} className="text-sm text-white/90 hover:bg-zinc-800 rounded px-2 py-1 cursor-pointer flex items-center">
                 <span className="mr-2">{item === "Notes" ? <span className="w-2 h-2 bg-blue-500 rounded-full inline-block mr-2" /> : null}</span>
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <div className="p-4 border-t border-slate-800 text-xs text-gray-400">Tags</div>
+        <div className="p-4 border-t border-zinc-800 text-xs text-zinc-400">Tags</div>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-800 bg-background">
+        <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-background">
           <div className="flex items-center space-x-3">
             <h1 className="text-2xl font-bold text-white">Notes</h1>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')}><List className="size-5" /></Button>
-            <Button variant={view === 'card' ? "secondary" : "ghost"} size="icon" onClick={() => setView('card')}><LayoutGrid className="size-5" /></Button>
-            <Button variant="secondary" className="ml-2"><Plus className="mr-2 size-4" /> New</Button>
+            <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')} className="hover:bg-zinc-800"><List className="size-5" /></Button>
+            <Button variant={view === 'card' ? "secondary" : "ghost"} size="icon" onClick={() => setView('card')} className="hover:bg-zinc-800"><LayoutGrid className="size-5" /></Button>
+            <Button variant="secondary" className="ml-2 bg-zinc-800 hover:bg-zinc-700 border-zinc-700"><Plus className="mr-2 size-4" /> New</Button>
           </div>
         </div>
 
@@ -146,21 +146,21 @@ export function Notes() {
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm text-left border-collapse">
                 <thead>
-                  <tr className="bg-black text-gray-400">
-                    <th className="px-4 py-2 font-semibold">#</th>
+                  <tr className="bg-zinc-900 text-zinc-400">
+                    <th className="px-4 py-2 font-semibold border-b border-zinc-800">#</th>
                     {columns.map((col) => (
-                      <th key={col} className="px-4 py-2 font-semibold">{col}</th>
+                      <th key={col} className="px-4 py-2 font-semibold border-b border-zinc-800">{col}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {notes.map((note, idx) => (
-                    <tr key={note.id} className="border-b border-slate-800 hover:bg-black transition-colors">
-                      <td className="px-4 py-2 text-gray-400">{idx + 1}</td>
+                    <tr key={note.id} className="border-b border-zinc-800 hover:bg-zinc-900 transition-colors">
+                      <td className="px-4 py-2 text-zinc-400">{idx + 1}</td>
                       <td className="px-4 py-2 text-white font-medium cursor-pointer hover:underline">{note.title}</td>
-                      <td className="px-4 py-2 text-gray-400">{note.tags.join(", ")}</td>
-                      <td className="px-4 py-2 text-gray-400">{note.updated}</td>
-                      <td className="px-4 py-2 text-gray-400">{note.created}</td>
+                      <td className="px-4 py-2 text-zinc-400">{note.tags.join(", ")}</td>
+                      <td className="px-4 py-2 text-zinc-400">{note.updated}</td>
+                      <td className="px-4 py-2 text-zinc-400">{note.created}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -169,15 +169,15 @@ export function Notes() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {notes.map((note) => (
-                <Card key={note.id} className="bg-black border-slate-700 rounded-lg p-4 flex flex-col h-48">
+                <Card key={note.id} className="bg-zinc-900 border-zinc-800 rounded-lg p-4 flex flex-col h-48 hover:bg-zinc-800 transition-colors">
                   <div className="flex items-center mb-2">
-                    <span className="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded mr-2">Notes</span>
-                    <span className="text-xs text-gray-400 ml-auto">{note.updated}</span>
+                    <span className="text-xs bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded mr-2">Notes</span>
+                    <span className="text-xs text-zinc-400 ml-auto">{note.updated}</span>
                   </div>
                   <h2 className="font-semibold text-white text-base mb-1 line-clamp-2">{note.title}</h2>
-                  <div className="text-xs text-gray-400 mb-2 line-clamp-3">{note.content}</div>
+                  <div className="text-xs text-zinc-400 mb-2 line-clamp-3">{note.content}</div>
                   <div className="mt-auto flex items-center justify-between">
-                    <span className="text-xs text-gray-500 italic">No tags</span>
+                    <span className="text-xs text-zinc-500 italic">No tags</span>
                   </div>
                 </Card>
               ))}

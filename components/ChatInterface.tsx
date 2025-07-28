@@ -1,17 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Card } from "./ui/card";
-import { 
-  Search, 
-  Menu, 
-  Paperclip, 
-  Send, 
-  Sparkles,
-  Bot,
-  Zap,
-  Heart
-} from "lucide-react";
+import { Menu, Send, Paperclip, Search } from "lucide-react";
 
 interface ChatInterfaceProps {
   onMenuToggle: () => void;
@@ -53,9 +43,9 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full bg-background text-foreground">
       {/* Top Bar */}
-      <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="flex items-center justify-between p-4 border-b border-zinc-800">
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
@@ -65,27 +55,22 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
           >
             <Menu className="size-4" />
           </Button>
-          <div className="flex items-center space-x-2">
-            <div className="size-6 bg-primary rounded-md flex items-center justify-center">
-              <Sparkles className="size-3 text-primary-foreground" />
-            </div>
-            <span className="font-medium">Choy AI</span>
-          </div>
+          <h1 className="text-xl font-bold">Chat</h1>
         </div>
-        
-        <div className="flex items-center space-x-4">
-          <div className="hidden md:flex items-center space-x-2 px-3 py-2 bg-muted rounded-md text-sm text-muted-foreground">
-            <Search className="size-4" />
-            <span>Search...</span>
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-              <span className="text-xs">⌘</span>K
-            </kbd>
+        <div className="flex items-center space-x-2">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 size-4" />
+            <Input 
+              placeholder="Search conversations..." 
+              className="pl-10 w-64 bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-400"
+            />
           </div>
         </div>
       </div>
 
-      {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col items-center justify-center p-6 space-y-8">
+      {/* Chat Messages */}
+      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+
         {/* Welcome Message */}
         <div className="text-center space-y-2 mb-8">
           <div className="size-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">

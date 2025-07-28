@@ -1,7 +1,6 @@
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import { 
   MessageSquare,
   Calendar,
@@ -156,31 +155,25 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
                                 (currentView === "notes" && item.label === "Notes");
       
       return (
-        <Tooltip key={item.label}>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              className={`w-full justify-start text-left h-auto py-2 px-3 transition-colors duration-200 ${
-                isCurrentlyActive
-                  ? "bg-accent text-accent-foreground"
-                  : "hover:bg-accent hover:text-accent-foreground"
-              }`}
-              onClick={() => onNavigate(item)}
-            >
-              <item.icon className="mr-3 size-4 flex-shrink-0" />
-              <span className="text-sm">{item.label}</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" className="bg-accent text-accent-foreground border-border">
-            <p>{item.tooltip}</p>
-          </TooltipContent>
-        </Tooltip>
+        <Button
+          key={item.label}
+          variant="ghost"
+          className={`w-full justify-start text-left h-auto py-2 px-3 transition-colors duration-200 ${
+            isCurrentlyActive
+              ? "bg-black/40 text-foreground"
+              : "hover:bg-black/30 hover:text-foreground"
+          }`}
+          onClick={() => onNavigate(item)}
+        >
+          <item.icon className="mr-3 size-4 flex-shrink-0" />
+          <span className="text-sm">{item.label}</span>
+        </Button>
       );
     });
   };
 
   return (
-    <TooltipProvider>
+    <div>
       {/* Mobile backdrop */}
       {isOpen && (
         <div 
@@ -191,7 +184,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
       
       {/* Sidebar */}
       <div className={`
-        fixed left-0 top-0 z-50 h-full w-80 bg-gradient-to-b from-bg-secondary to-bg-primary border-r border-border
+        fixed left-0 top-0 z-50 h-full w-80 bg-zinc-950 border-r border-zinc-800
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:relative md:z-0
@@ -200,18 +193,18 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
       `}>
         <div className="flex h-full flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
+          <div className="flex items-center justify-between p-4 border-b border-zinc-800 flex-shrink-0">
             <div className="flex items-center space-x-3 min-w-0">
-              <div className="size-8 bg-accent-secondary rounded-lg flex items-center justify-center flex-shrink-0">
-                <MessageSquare className="size-4 text-accent-secondary-text" />
+              <div className="size-8 bg-zinc-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                <MessageSquare className="size-4 text-white" />
               </div>
-              <span className="text-foreground font-semibold">Choy AI</span>
+              <span className="text-white font-semibold">Choy AI</span>
             </div>
             <Button
               variant="ghost"
               size="sm"
               onClick={onToggle}
-              className="md:hidden text-sidebar-foreground hover:bg-sidebar-accent flex-shrink-0"
+              className="md:hidden text-white hover:bg-zinc-800 flex-shrink-0"
             >
               <X className="size-4" />
             </Button>
@@ -221,7 +214,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
           <div className="flex-1 overflow-y-auto overflow-x-hidden py-2 min-h-0">
             {/* Core AI Section */}
             <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-sidebar-foreground/70 uppercase tracking-wider">
+              <div className="px-3 py-1.5 text-xs font-medium text-zinc-400 uppercase tracking-wider">
                 🔹 Core AI
               </div>
               <nav className="space-y-0.5 mb-2">
@@ -229,11 +222,11 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
               </nav>
             </div>
 
-            <Separator className="my-2 mx-4" />
+            <Separator className="my-2 mx-4 bg-zinc-800" />
 
             {/* Productivity Section */}
             <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-sidebar-foreground/70 uppercase tracking-wider">
+              <div className="px-3 py-1.5 text-xs font-medium text-zinc-400 uppercase tracking-wider">
                 🔹 Productivity
               </div>
               <nav className="space-y-0.5 mb-2">
@@ -241,11 +234,11 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
               </nav>
             </div>
 
-            <Separator className="my-2 mx-4" />
+            <Separator className="my-2 mx-4 bg-zinc-800" />
 
             {/* Business & Finance Section */}
             <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-sidebar-foreground/70 uppercase tracking-wider">
+              <div className="px-3 py-1.5 text-xs font-medium text-zinc-400 uppercase tracking-wider">
                 🔹 Business &amp; Finance
               </div>
               <nav className="space-y-0.5 mb-2">
@@ -253,11 +246,11 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
               </nav>
             </div>
 
-            <Separator className="my-2 mx-4" />
+            <Separator className="my-2 mx-4 bg-zinc-800" />
 
             {/* AI Utility Agents Section */}
             <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-sidebar-foreground/70 uppercase tracking-wider">
+              <div className="px-3 py-1.5 text-xs font-medium text-zinc-400 uppercase tracking-wider">
                 🔹 AI Utility Agents
               </div>
               <nav className="space-y-0.5 mb-2">
@@ -267,34 +260,27 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
           </div>
 
           {/* Bottom section - Fixed at bottom */}
-          <div className="border-t border-sidebar-border p-3 flex-shrink-0">
+          <div className="border-t border-zinc-800 p-3 flex-shrink-0 bg-zinc-900">
             {/* User Profile */}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground p-2"
-                  onClick={onProfileClick}
-                >
-                  <Avatar className="size-8 mr-3">
-                    <AvatarImage src="/placeholder-avatar.jpg" />
-                    <AvatarFallback className="bg-sidebar-primary text-sidebar-primary-foreground">
-                      AC
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex flex-col items-start min-w-0">
-                    <span className="text-sm font-medium">Alex Chen</span>
-                    <span className="text-xs text-sidebar-foreground/70">Premium User</span>
-                  </div>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="right" className="bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-border">
-                <p>User profile and settings</p>
-              </TooltipContent>
-            </Tooltip>
+            <Button
+              variant="ghost"
+              className="w-full justify-start text-white hover:bg-zinc-800 p-3 rounded-lg"
+              onClick={onProfileClick}
+            >
+              <Avatar className="size-10 mr-3 ring-2 ring-zinc-600">
+                <AvatarImage src="/placeholder-avatar.jpg" />
+                <AvatarFallback className="bg-zinc-700 text-white font-semibold">
+                  AC
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex flex-col items-start min-w-0">
+                <span className="text-sm font-semibold text-white">Alex Chen</span>
+                <span className="text-xs text-zinc-300">Premium User</span>
+              </div>
+            </Button>
           </div>
         </div>
       </div>
-    </TooltipProvider>
+    </div>
   );
 }
