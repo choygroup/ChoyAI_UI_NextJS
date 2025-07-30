@@ -1,4 +1,4 @@
-// File: /home/runner/workspace/app/layout.tsx
+// File: /Users/macbookpr0/SN Mac Drive/5-WORKS/uiux/ChoyAI_UI_NextJS/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

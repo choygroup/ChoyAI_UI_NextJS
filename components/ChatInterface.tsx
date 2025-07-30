@@ -27,7 +27,7 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Top Bar */}
       <div className="flex items-center justify-between p-4 border-b border-zinc-800">
         <div className="flex items-center space-x-4">
@@ -53,7 +53,8 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <main className="flex-1 p-6">
+        <div className="max-w-[1600px] mx-auto h-full flex flex-col items-center justify-center">
 
         {/* Welcome Message */}
         <div className="text-center space-y-2 mb-8">
@@ -95,7 +96,8 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
             </Button>
           </div>
         </Card>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

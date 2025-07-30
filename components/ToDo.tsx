@@ -58,7 +58,7 @@ interface ToDoProps {
 
 export function ToDo({ onMenuToggle }: ToDoProps) {
   return (
-    <div className="flex-1 flex h-full bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
         {/* To-Do Sidebar */}
         <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col p-4 space-y-4">
             <Input placeholder="Search" className="bg-background border-border w-full" />
@@ -97,7 +97,7 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 flex flex-col">
+        <main className="flex-1">
             {/* Top Bar */}
             <div className="flex items-center justify-between p-4 border-b border-border">
                 <div className="flex items-center space-x-4">
@@ -120,7 +120,8 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
             </div>
 
             {/* Task Board */}
-            <div className="flex-1 p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-y-auto">
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1600px] mx-auto">
                 {taskSections.map((section) => (
                 <div key={section.title} className="space-y-4">
                     <div className="flex justify-between items-center">
@@ -152,6 +153,7 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
                     </Button>
                 </div>
                 ))}
+              </div>
             </div>
         </main>
     </div>

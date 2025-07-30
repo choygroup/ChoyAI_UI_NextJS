@@ -9,7 +9,7 @@ import { Notes } from "@/components/Notes";
 import { ComingSoon } from "@/components/ComingSoon";
 
 export default function HomePage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [currentView, setCurrentView] = useState("chat");
   const [selectedItem, setSelectedItem] = useState({ label: "Chat / Talk", tooltip: "Choy AI, your personal assistant" });
 
@@ -71,8 +71,8 @@ export default function HomePage() {
     <div className="dark">
       <div className="flex h-screen bg-background text-foreground overflow-hidden">
         {/* Sidebar */}
-        <Sidebar 
-          isOpen={sidebarOpen} 
+        <Sidebar
+          isOpen={sidebarOpen}
           onToggle={toggleSidebar}
           onNavigate={handleNavigation}
           onProfileClick={handleProfileClick}
@@ -80,8 +80,14 @@ export default function HomePage() {
         />
         
         {/* Main Content */}
-        <div className="flex-1 flex flex-col min-w-0">
-          {renderContent()}
+        <div className={`flex-1 min-w-0 transition-all duration-300 ${
+          sidebarOpen ? 'ml-80' : 'ml-8'
+        }`}>
+          <div className="h-screen overflow-y-auto">
+            <div className="container mx-auto h-full">
+              {renderContent()}
+            </div>
+          </div>
         </div>
       </div>
     </div>

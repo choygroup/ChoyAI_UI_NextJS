@@ -78,7 +78,7 @@ interface NewsProps {
 
 export function News({ onMenuToggle }: NewsProps) {
   return (
-    <div className="flex-1 flex flex-col h-full bg-background text-gray-300 font-sans overflow-y-auto">
+    <div className="flex flex-col min-h-screen bg-background text-gray-300 font-sans">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
         <div className="flex items-center justify-between p-4">
@@ -164,10 +164,10 @@ export function News({ onMenuToggle }: NewsProps) {
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        
-        {/* Left/Main Content Area */}
-        <div className="lg:col-span-2 xl:col-span-3 space-y-6">
+      <main className="flex-1 p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1600px] mx-auto">
+          {/* Left/Main Content Area */}
+          <div className="lg:col-span-2 xl:col-span-3 space-y-6">
             <div className="flex justify-between items-center">
                 <h2 className="text-xl font-semibold text-white flex items-center">
                     Latest News <ChevronRight className="size-5 mt-1" />
@@ -178,7 +178,7 @@ export function News({ onMenuToggle }: NewsProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Featured Article */}
                 <Card className="bg-card border-slate-700 rounded-lg overflow-hidden flex flex-col justify-end h-[300px] p-4 relative">
-                    <img src={mainArticle.image} alt={mainArticle.title} className="absolute inset-0 w-full h-full object-cover opacity-30"/>
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 to-black/20" />
                     <div className="relative z-10">
                         {mainArticle.insider && <span className="text-xs bg-blue-500 text-white font-semibold px-2 py-1 rounded-sm mb-2 inline-block">INSIDER</span>}
                         <h3 className="text-xl font-bold text-white">{mainArticle.title}</h3>
@@ -212,7 +212,9 @@ export function News({ onMenuToggle }: NewsProps) {
                             <h4 className="font-semibold text-white mt-1">{article.title}</h4>
                             <p className="text-xs text-gray-400 mt-1">{article.author} - {article.time}</p>
                         </div>
-                        <img src={article.image} alt={article.title} className="w-24 h-24 object-cover rounded-md ml-4"/>
+                        <div className="w-24 h-24 bg-slate-800 rounded-md ml-4 flex items-center justify-center">
+                          <Newspaper className="size-8 text-slate-600" />
+                        </div>
                     </Card>
                 ))}
             </div>
@@ -236,7 +238,9 @@ export function News({ onMenuToggle }: NewsProps) {
                   <p className="text-xs text-gray-400 mb-2">{match.tournament} - {match.matchInfo}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                        <img src={match.team1.logo} alt={match.team1.name} className="w-6 h-6"/>
+                        <div className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center">
+                          <span className="text-xs text-slate-400">{match.team1.name}</span>
+                        </div>
                         <span className="font-semibold">{match.team1.name}</span>
                         <span className="text-sm text-gray-400">{match.team1.overs}</span>
                     </div>
@@ -248,7 +252,9 @@ export function News({ onMenuToggle }: NewsProps) {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                        <img src={match.team2.logo} alt={match.team2.name} className="w-6 h-6"/>
+                        <div className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center">
+                          <span className="text-xs text-slate-400">{match.team2.name}</span>
+                        </div>
                         <span className="font-semibold">{match.team2.name}</span>
                         <span className="text-sm text-gray-400">{match.team2.overs}</span>
                     </div>
@@ -269,7 +275,9 @@ export function News({ onMenuToggle }: NewsProps) {
             <div className="space-y-4">
               {nowPlaying.map((movie, index) => (
                 <div key={index} className="flex space-x-4">
-                    <img src={movie.image} alt={movie.title} className="w-20 h-28 object-cover rounded-md"/>
+                    <div className="w-20 h-28 bg-slate-800 rounded-md flex items-center justify-center">
+                      <Film className="size-8 text-slate-600" />
+                    </div>
                     <div>
                         <h4 className="font-semibold text-white">{movie.title}</h4>
                         <div className="text-xs text-gray-400 mt-2 space-y-1">
@@ -283,6 +291,7 @@ export function News({ onMenuToggle }: NewsProps) {
               ))}
             </div>
           </Card>
+          </div>
         </div>
       </main>
     </div>

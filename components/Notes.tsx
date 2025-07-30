@@ -95,7 +95,7 @@ export function Notes() {
   const [view, setView] = useState<'list' | 'card'>("list");
 
   return (
-    <div className="flex h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Sidebar */}
       <aside className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col">
         <div className="p-4 border-b border-zinc-800">
@@ -127,7 +127,7 @@ export function Notes() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0">
+      <main className="flex-1">
         {/* Top Bar */}
         <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-background">
           <div className="flex items-center space-x-3">
@@ -141,7 +141,8 @@ export function Notes() {
         </div>
 
         {/* Main Area */}
-        <div className="flex-1 overflow-y-auto p-6 bg-background">
+        <div className="p-6">
+          <div className="max-w-[1600px] mx-auto">
           {view === 'list' ? (
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm text-left border-collapse">
@@ -183,6 +184,7 @@ export function Notes() {
               ))}
             </div>
           )}
+          </div>
         </div>
       </main>
     </div>

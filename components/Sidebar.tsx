@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
-import { 
+import {
   MessageSquare,
   Calendar,
   CheckSquare,
@@ -18,7 +18,8 @@ import {
   Globe,
   Menu,
   X,
-  User
+  User,
+  ChevronRight
 } from "lucide-react";
 
 // Core AI Section
@@ -150,9 +151,9 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
   const renderNavItems = (items: any[]) => {
     return items.map((item) => {
       const isCurrentlyActive = (currentView === "chat" && item.label === "Chat / Talk") || 
-                                (currentView === "todo" && item.label === "Tasks / To-Do") ||
-                                (currentView === "news" && item.label === "News") ||
-                                (currentView === "notes" && item.label === "Notes");
+                               (currentView === "todo" && item.label === "Tasks / To-Do") ||
+                               (currentView === "news" && item.label === "News") ||
+                               (currentView === "notes" && item.label === "Notes");
       
       return (
         <Button
@@ -173,27 +174,39 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
   };
 
   return (
-    <div>
+    <div className="h-full relative">
       {/* Mobile backdrop */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
           onClick={onToggle}
         />
       )}
       
-      {/* Sidebar */}
-      <div className={`
-        fixed left-0 top-0 z-50 h-full w-80 bg-zinc-950 border-r border-zinc-800
-        transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        md:translate-x-0 md:relative md:z-0
-        flex-shrink-0
-        overflow-x-hidden
-      `}>
-        <div className="flex h-full flex-col">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-zinc-800 flex-shrink-0">
+      {/* Sidebar Container */}
+      <div className="fixed inset-y-0 left-0 z-40">
+        {/* Main Sidebar */}
+        <div className={`
+          relative h-full w-80 bg-zinc-950 border-r border-zinc-800
+          transform transition-transform duration-300 ease-in-out
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}>
+          {/* Chevron Icon */}
+          <button
+            className={`absolute -right-8 top-1/2 -translate-y-1/2 h-12 w-8
+              bg-zinc-950 rounded-r border-r border-t border-b border-zinc-800
+              flex items-center justify-center z-50`}
+            onClick={onToggle}
+          >
+            <ChevronRight
+              className={`text-white/70 size-5 transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
+            />
+          </button>
+
+          {/* Sidebar Content */}
+          <div className="flex flex-col h-full">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-zinc-800 flex-shrink-0">
             <div className="flex items-center space-x-3 min-w-0">
               <div className="size-8 bg-zinc-800 rounded-lg flex items-center justify-center flex-shrink-0">
                 <MessageSquare className="size-4 text-white" />
@@ -264,7 +277,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             {/* User Profile */}
             <Button
               variant="ghost"
-              className="w-full justify-start text-white hover:bg-zinc-800 p-3 rounded-lg"
+              className="w-full justify-start text-white p-3 rounded-lg hover:bg-transparent"
               onClick={onProfileClick}
             >
               <Avatar className="size-10 mr-3 ring-2 ring-zinc-600">
@@ -274,10 +287,11 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
                 </AvatarFallback>
               </Avatar>
               <div className="flex flex-col items-start min-w-0">
-                <span className="text-sm font-semibold text-white">Alex Chen</span>
-                <span className="text-xs text-zinc-300">Premium User</span>
+                <span className="text-sm font-semibold text-white hover:text-white">Alex Chen</span>
+                <span className="text-xs text-zinc-300 hover:text-zinc-300">Premium User</span>
               </div>
             </Button>
+          </div>
           </div>
         </div>
       </div>
