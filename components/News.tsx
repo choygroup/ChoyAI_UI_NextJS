@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Menu, Search, Sun, Cloud, CloudRain, Star, Film, Clock, Calendar, ChevronRight } from "lucide-react";
+import { Menu, Search, Sun, Cloud, CloudRain, Star, Film, Clock, Calendar, ChevronRight, Newspaper } from "lucide-react";
 
 // --- MOCK DATA ---
 const navLinks = ["Home", "Local", "World", "Business", "Finance", "Technology", "Sports", "Entertainment", "Science"];
@@ -147,7 +147,7 @@ export function News({ onMenuToggle }: NewsProps) {
             <div className="flex-grow overflow-hidden whitespace-nowrap">
                 <div className="flex animate-scroll space-x-6">
                     {[...cryptoPrices, ...cryptoPrices].map((crypto, index) => (
-                    <div key={index} className="flex items-center space-x-2 text-xs shrink-0">
+                    <div key={`crypto-${index}`} className="flex items-center space-x-2 text-xs shrink-0">
                         <span className="font-bold text-lg text-yellow-400">B</span>
                         <div>
                             <p className="text-gray-400">{crypto.name}</p>
