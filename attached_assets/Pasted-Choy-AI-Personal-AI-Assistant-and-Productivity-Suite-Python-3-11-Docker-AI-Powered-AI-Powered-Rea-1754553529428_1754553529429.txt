@@ -1,0 +1,174 @@
+Choy AI: Personal AI Assistant and Productivity Suite
+Python 3.11+ Docker AI Powered AI Powered Real-time Telegram Bot License: Apache 2.0
+
+Advanced Personal AI Assistant with 14-Module Productivity Ecosystem
+
+Enterprise-grade productivity suite featuring sophisticated AI-powered modules for personal and business automation. Built with cost-efficiency in mind, integrating multiple free APIs and minimal paid services to deliver maximum value with minimal operational costs.
+
+📚 Documentation • 🚀 Quick Start • ⚙️ Configuration • 🏗️ Architecture • 🤝 Contributing
+
+🌟 Key Features
+🧠 Intelligent Core
+🎯 Long-term Memory: Persistent user memories with semantic search
+🎭 Multiple Personas: Switch between AI personalities (Choy, Tony, Rose)
+🔄 Context Awareness: Maintains conversation context across sessions
+🧩 Strategic Thinking: AI that remembers and builds upon interactions
+💰 Cost-Optimized: Smart API usage with free-tier maximization
+🤖 Multi-Provider AI System
+⚡ Provider Management: Multiple AI providers with automatic failover
+🎯 Task-Specific Routing: Optimized providers for different task types
+📊 Performance Monitoring: Real-time health checking and metrics
+⚙️ Flexible Configuration: Easy provider switching based on preferences
+💸 Cost Control: DeepSeek primary, OpenAI/Claude fallback
+📋 14-Module Productivity Suite
+📝 Tasks & Notes: Local management with AI scoring
+📅 Calendar & Reminders: Google Calendar smart scheduling
+📧 Email Assistant: Gmail API with AI-powered drafting
+📰 News Aggregator: RSS feeds with AI summarization
+💰 Finance Tracker: Google Sheets expense tracking
+📊 Project Management: ClickUp/Trello AI task management
+📈 Trading Analysis: CoinGecko + TradingView insights
+🌐 Social Media: Multi-platform content management
+☎️ Voice Processing: Whisper API transcription
+🤖 Online Agent: Service automation for bookings
+💬 Communication
+📱 Telegram Bot: Full-featured integration
+💭 Natural Conversations: Context-aware responses
+🧠 Memory Commands: Save, recall, manage information
+🎭 Persona Switching: Real-time personality changes
+🎭 Available Personas
+Persona	Style	Specialization	Use Case
+🎯 Choy	Confident, Strategic, Direct	Business & Leadership	Primary assistant, strategic decisions
+🔧 Tony	Tech Genius, Sarcastic, Innovative	Technical & Development	Programming, system architecture
+🌸 Rose	Warm, Empathetic, Supportive	Emotional & Personal	Support, guidance, personal matters
+🚀 Quick Start
+📋 Prerequisites
+🔧 System Requirements
+
+Ubuntu/Debian/CentOS server
+2GB+ RAM, 10GB+ storage
+Python 3.11+ (auto-installed)
+Docker (auto-installed)
+🔑 Required API Keys
+
+Telegram Bot Token (@BotFather)
+DeepSeek API Key (recommended)
+OpenAI/Anthropic/xAI (optional)
+Google APIs (optional modules)
+⚡ Installation Options
+🚀 Option 1: One-Command VPS Setup (Recommended)
+💻 Option 2: Local Development Setup
+🔧 Option 3: Manual Installation
+📋 Command Reference
+Command	Purpose	Description
+make help	📖 Show all commands	Complete command reference
+make vps-setup	🖥️ Full VPS setup	Complete server setup
+make setup	⚙️ Configure environment	Setup dependencies and .env
+make deploy	🚀 Deploy ChoyAI	Deploy with Docker
+make status	📊 Check services	View running status
+make logs	📋 View logs	Monitor application logs
+make backup	💾 Create backup	Backup data and config
+make health	🏥 Health check	Verify system health
+make update	🔄 Update system	Pull code and restart
+⚙️ Configuration
+🔧 Environment Variables
+Create a .env file with the following configuration:
+
+📝 Required Configuration
+🔗 Module-Specific APIs
+🎭 Personas Configuration
+Personas are defined in YAML files in the templates/personas/ directory:
+
+# Example: templates/personas/choy.yaml
+name: "Choy"
+description: "Confident, strategic AI assistant"
+system_prompt: |
+  You are Choy, a confident and strategic AI assistant...
+traits:
+  - confident
+  - strategic  
+  - direct
+response_style:
+  temperature: 0.7
+  max_tokens: 1000
+🎯 Usage Guide
+📱 Telegram Bot Commands
+Category	Command	Description	Example
+🎭 Personas	/start	Welcome message and overview	/start
+/persona <name>	Switch AI personality	/persona tony
+/personas	List available personalities	/personas
+/bio <text>	Set user biography	/bio Software engineer
+🧠 Memory	/remember <key> <value>	Save a memory	/remember favorite_color blue
+/recall <key>	Retrieve a memory	/recall favorite_color
+/memories	List all memories	/memories
+/history	View conversation history	/history
+🤖 AI Providers	/providers	Show AI providers status	/providers
+/switchai <task> <provider>	Switch AI provider for tasks	/switchai creative openai
+/stats	View AI usage statistics	/stats
+🎯 Task Types & Optimal Providers
+Task Type	Best For	Optimal Provider	Fallback
+conversation	General chat	DeepSeek	OpenAI, Claude
+technical	Programming questions	DeepSeek	OpenAI, xAI
+creative	Writing, storytelling	OpenAI	Claude, DeepSeek
+analysis	Deep analysis, research	Claude	OpenAI, DeepSeek
+coding	Code generation	DeepSeek	OpenAI, Claude
+emotional	Emotional support	Claude	OpenAI, DeepSeek
+💬 Natural Conversation
+Simply chat naturally! ChoyAI will:
+
+✅ Remember important details automatically
+✅ Reference past conversations contextually
+✅ Adapt responses based on active persona
+✅ Provide personalized assistance over time
+✅ Learn your preferences and communication style
+🏗️ Architecture
+
+🧩 System Components
+🤖 Core AI Engine
+
+Multi-provider orchestration
+Task-specific routing
+Cost optimization
+Automatic failover
+Performance monitoring
+💾 3-Layer Memory System
+
+Core Memory: System knowledge
+User Memory: Personal preferences
+Vector Memory: Semantic search
+Conversation: Session context
+📋 Modular Architecture
+
+Clean separation of concerns
+Pluggable components
+Independent module scaling
+Unified API interfaces
+Hot-swappable personas
+🔗 Integration Layer
+
+Unified API management
+Fallback mechanisms
+Rate limiting & caching
+Error handling & retry logic
+Cost tracking & optimization
+📁 Project Structure
+ChoyAI/
+├── 🚀 app/                      # Main application
+│   ├── 🧠 core/                 # Core AI engine & providers
+│   ├── 📋 modules/              # 14 Productivity modules
+│   │   ├── 💾 memory/           # Memory management system
+│   │   ├── 🎭 personas/         # Multi-personality system
+│   │   ├── 💬 chat/             # Chat processing
+│   │   └── ⚡ productivity/     # Productivity suite modules
+│   ├── 🔗 integrations/         # External API integrations
+│   ├── ⚙️ config/              # Configuration management
+│   └── 🛠️ utils/               # Utilities & helpers
+├── 💾 data/                     # Data storage
+│   ├── 🎭 personas/            # Persona definitions
+│   ├── 🗄️ databases/           # SQLite databases  
+│   ├── 🧠 core_memory/         # Core memory storage
+│   └── 📋 logs/                # Application logs
+├── 🐳 config/                   # Docker & deployment
+├── 📚 docs/                     # Documentation
+├── 🧪 tests/                    # Test suites
+└── 🛠️ tools/                   # Utility scripts
