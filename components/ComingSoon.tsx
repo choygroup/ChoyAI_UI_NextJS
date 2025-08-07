@@ -34,14 +34,6 @@ export function ComingSoon({ onMenuToggle, title, description }: ComingSoonProps
       {/* Top Bar */}
       <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onMenuToggle}
-            className="md:hidden"
-          >
-            <Menu className="size-4" />
-          </Button>
         </div>
       </div>
 
@@ -56,10 +48,10 @@ export function ComingSoon({ onMenuToggle, title, description }: ComingSoonProps
           </div>
           
           {/* Title with Gradient */}
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">{title}</h1>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">{title}</h1>
           
           {/* Coming Soon Text */}
-          <p className="text-lg text-muted-foreground mb-2">Coming Soon...</p>
+          <p className="text-muted-foreground mb-2">Coming Soon...</p>
           
           {/* Description */}
           <p className="text-sm text-muted-foreground">{description}</p>

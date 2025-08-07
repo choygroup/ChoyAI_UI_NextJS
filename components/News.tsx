@@ -83,11 +83,8 @@ export function News({ onMenuToggle }: NewsProps) {
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon" onClick={onMenuToggle} className="md:hidden">
-              <Menu />
-            </Button>
             <div>
-                <h1 className="font-bold text-xl text-foreground">Choy News</h1>
+                <h1 className="text-2xl font-bold text-foreground">Choy News</h1>
                 <p className="text-xs text-muted-foreground">Sunday, Jun 25, 2024</p>
             </div>
           </div>
@@ -169,7 +166,7 @@ export function News({ onMenuToggle }: NewsProps) {
           {/* Left/Main Content Area */}
           <div className="lg:col-span-2 xl:col-span-3 space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-foreground flex items-center">
+                <h2 className="text-lg font-semibold text-foreground flex items-center">
                     Latest News <ChevronRight className="size-5 mt-1" />
                 </h2>
             </div>
@@ -181,7 +178,7 @@ export function News({ onMenuToggle }: NewsProps) {
                     <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 to-black/20" />
                     <div className="relative z-10">
                         {mainArticle.insider && <span className="text-xs bg-blue-500 text-white font-semibold px-2 py-1 rounded-sm mb-2 inline-block">INSIDER</span>}
-                        <h3 className="text-xl font-bold text-foreground">{mainArticle.title}</h3>
+                        <h3 className="text-lg font-bold text-foreground">{mainArticle.title}</h3>
                         <p className="text-xs text-muted-foreground mt-2">{mainArticle.time} - {mainArticle.author}</p>
                     </div>
                 </Card>

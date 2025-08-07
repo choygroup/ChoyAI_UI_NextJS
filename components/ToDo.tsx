@@ -101,14 +101,6 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
             {/* Top Bar */}
             <div className="flex items-center justify-between p-4 border-b border-border">
                 <div className="flex items-center space-x-4">
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={onMenuToggle}
-                        className="md:hidden"
-                    >
-                        <Menu className="size-4" />
-                    </Button>
                     <h1 className="text-2xl font-bold text-foreground">Task</h1>
                 </div>
                 <div className="flex items-center space-x-2">

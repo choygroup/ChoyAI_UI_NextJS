@@ -226,14 +226,6 @@ export function Calendar({ onMenuToggle }: CalendarProps) {
       {/* Top Bar */}
       <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onMenuToggle}
-            className="md:hidden"
-          >
-            <Menu className="size-4" />
-          </Button>
           <h1 className="text-2xl font-bold">Calendar</h1>
         </div>
         

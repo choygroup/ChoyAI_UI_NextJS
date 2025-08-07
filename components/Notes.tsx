@@ -91,7 +91,11 @@ const notes = [
 
 const columns = ["Title", "Tags", "Last updated", "Created at"];
 
-export function Notes() {
+interface NotesProps {
+  onMenuToggle: () => void;
+}
+
+export function Notes({ onMenuToggle }: NotesProps) {
   const [view, setView] = useState<'list' | 'card'>("list");
 
   return (

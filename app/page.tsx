@@ -56,7 +56,7 @@ export default function HomePage() {
       case "news":
         return <News onMenuToggle={toggleSidebar} />;
       case "notes":
-        return <Notes />;
+        return <Notes onMenuToggle={toggleSidebar} />;
       case "calendar":
         return <Calendar onMenuToggle={toggleSidebar} />;
       case "coming-soon":
@@ -86,7 +86,7 @@ export default function HomePage() {
         
         {/* Main Content */}
         <div className={`flex-1 min-w-0 transition-all duration-300 ${
-          sidebarOpen ? 'ml-80' : 'ml-8'
+          sidebarOpen ? 'ml-80' : 'ml-16'
         }`}>
           <div className="h-screen overflow-y-auto">
             <div className="container mx-auto h-full">

@@ -18,8 +18,7 @@ import {
   Globe,
   Menu,
   X,
-  User,
-  ChevronRight
+  User
 } from "lucide-react";
 
 // Core AI Section
@@ -160,15 +159,16 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
         <Button
           key={item.label}
           variant="ghost"
-          className={`w-full justify-start text-left h-auto py-2 px-3 transition-colors duration-200 ${
+          className={`w-full ${isOpen ? 'justify-start' : 'justify-center'} text-left h-auto py-2 px-3 transition-colors duration-200 ${
             isCurrentlyActive
               ? "bg-black/40 text-foreground"
               : "hover:bg-black/30 hover:text-foreground"
           }`}
           onClick={() => onNavigate(item)}
+          title={!isOpen ? item.label : undefined}
         >
-          <item.icon className="mr-3 size-4 flex-shrink-0" />
-          <span className="text-sm">{item.label}</span>
+          <item.icon className={`${isOpen ? 'mr-3' : ''} size-4 flex-shrink-0`} />
+          {isOpen && <span className="text-sm">{item.label}</span>}
         </Button>
       );
     });
@@ -188,85 +188,97 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
       <div className="fixed inset-y-0 left-0 z-40">
         {/* Main Sidebar */}
         <div className={`
-          relative h-full w-80 bg-zinc-950 border-r border-border
-          transform transition-transform duration-300 ease-in-out
-          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+          relative h-full bg-zinc-950 border-r border-border
+          transition-all duration-300 ease-in-out
+          ${isOpen ? 'w-80' : 'w-16'}
         `}>
-          {/* Chevron Icon */}
-          <button
-            className={`absolute -right-8 top-1/2 -translate-y-1/2 h-12 w-8
-              bg-zinc-950 rounded-r border-r border-t border-b border-border
-              flex items-center justify-center z-50`}
-            onClick={onToggle}
-          >
-            <ChevronRight
-              className={`text-foreground/70 size-5 transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
-            />
-          </button>
+
 
           {/* Sidebar Content */}
           <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
+                      {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
             <div className="flex items-center space-x-3 min-w-0">
-              <div className="size-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                <MessageSquare className="size-4 text-foreground" />
-              </div>
-              <span className="text-foreground font-semibold">Choy AI</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onToggle}
+                className="text-foreground hover:bg-accent/10 flex-shrink-0"
+              >
+                <Menu className="size-4" />
+              </Button>
+              {isOpen && (
+                <>
+                  <div className="size-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="size-4 text-foreground" />
+                  </div>
+                  <span className="text-foreground font-semibold">Choy AI</span>
+                </>
+              )}
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onToggle}
-              className="md:hidden text-foreground hover:bg-accent/10 flex-shrink-0"
-            >
-              <X className="size-4" />
-            </Button>
+            {isOpen && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onToggle}
+                className="text-foreground hover:bg-accent/10 flex-shrink-0"
+              >
+                <X className="size-4" />
+              </Button>
+            )}
           </div>
 
           {/* Navigation */}
           <div className="flex-1 overflow-y-auto overflow-x-hidden py-2 min-h-0">
             {/* Core AI Section */}
-            <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 Core AI
-              </div>
+            <div className={isOpen ? "px-4" : "px-2"}>
+              {isOpen && (
+                <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  🔹 Core AI
+                </div>
+              )}
               <nav className="space-y-0.5 mb-2">
                 {renderNavItems(coreAIItems)}
               </nav>
             </div>
 
-            <Separator className="my-2 mx-4 bg-border" />
+            {isOpen && <Separator className="my-2 mx-4 bg-border" />}
 
             {/* Productivity Section */}
-            <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 Productivity
-              </div>
+            <div className={isOpen ? "px-4" : "px-2"}>
+              {isOpen && (
+                <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  🔹 Productivity
+                </div>
+              )}
               <nav className="space-y-0.5 mb-2">
                 {renderNavItems(productivityItems)}
               </nav>
             </div>
 
-            <Separator className="my-2 mx-4 bg-border" />
+            {isOpen && <Separator className="my-2 mx-4 bg-border" />}
 
             {/* Business & Finance Section */}
-            <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 Business &amp; Finance
-              </div>
+            <div className={isOpen ? "px-4" : "px-2"}>
+              {isOpen && (
+                <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  🔹 Business &amp; Finance
+                </div>
+              )}
               <nav className="space-y-0.5 mb-2">
                 {renderNavItems(businessFinanceItems)}
               </nav>
             </div>
 
-            <Separator className="my-2 mx-4 bg-border" />
+            {isOpen && <Separator className="my-2 mx-4 bg-border" />}
 
             {/* AI Utility Agents Section */}
-            <div className="px-4">
-              <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 AI Utility Agents
-              </div>
+            <div className={isOpen ? "px-4" : "px-2"}>
+              {isOpen && (
+                <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  🔹 AI Utility Agents
+                </div>
+              )}
               <nav className="space-y-0.5 mb-2">
                 {renderNavItems(aiUtilityItems)}
               </nav>
@@ -278,19 +290,22 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             {/* User Profile */}
             <Button
               variant="ghost"
-              className="w-full justify-start text-foreground p-3 rounded-lg hover:bg-transparent"
+              className={`w-full ${isOpen ? 'justify-start' : 'justify-center'} text-foreground p-3 rounded-lg hover:bg-transparent`}
               onClick={onProfileClick}
+              title={!isOpen ? "Alex Chen - Premium User" : undefined}
             >
-              <Avatar className="size-10 mr-3 ring-2 ring-border">
+              <Avatar className={`${isOpen ? 'mr-3' : ''} size-10 ring-2 ring-border`}>
                 <AvatarImage src="/placeholder-avatar.jpg" />
                 <AvatarFallback className="bg-accent text-foreground font-semibold">
                   AC
                 </AvatarFallback>
               </Avatar>
-              <div className="flex flex-col items-start min-w-0">
-                <span className="text-sm font-semibold text-foreground hover:text-foreground">Alex Chen</span>
-                <span className="text-xs text-muted-foreground hover:text-muted-foreground">Premium User</span>
-              </div>
+              {isOpen && (
+                <div className="flex flex-col items-start min-w-0">
+                  <span className="text-sm font-semibold text-foreground hover:text-foreground">Alex Chen</span>
+                  <span className="text-xs text-muted-foreground hover:text-muted-foreground">Premium User</span>
+                </div>
+              )}
             </Button>
           </div>
           </div>
