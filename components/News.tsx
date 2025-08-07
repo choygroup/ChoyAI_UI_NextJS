@@ -78,7 +78,7 @@ interface NewsProps {
 
 export function News({ onMenuToggle }: NewsProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-gray-300 font-sans">
+    <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
         <div className="flex items-center justify-between p-4">
@@ -87,8 +87,8 @@ export function News({ onMenuToggle }: NewsProps) {
               <Menu />
             </Button>
             <div>
-                <h1 className="font-bold text-xl text-white">Choy News</h1>
-                <p className="text-xs text-gray-400">Sunday, Jun 25, 2024</p>
+                <h1 className="font-bold text-xl text-foreground">Choy News</h1>
+                <p className="text-xs text-muted-foreground">Sunday, Jun 25, 2024</p>
             </div>
           </div>
 
@@ -96,22 +96,22 @@ export function News({ onMenuToggle }: NewsProps) {
             <div className="relative w-full max-w-md">
               <Input
                 placeholder="Search"
-                className="bg-slate-800 border-slate-700 rounded-full w-full text-white"
+                className="bg-background border-border rounded-full w-full text-foreground"
               />
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 size-5 text-gray-500" />
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 size-5 text-muted-foreground" />
             </div>
           </div>
 
           <div className="hidden sm:flex items-center space-x-2">
-            <p className="text-3xl font-bold text-white">{weatherData.current.temp}</p>
+            <p className="text-3xl font-bold text-foreground">{weatherData.current.temp}</p>
             <weatherData.current.icon className="size-8 text-yellow-400" />
             <div className="text-xs">
-                <p className="text-white">{weatherData.cities.join(' • ')}</p>
+                <p className="text-foreground">{weatherData.cities.join(' • ')}</p>
                 <div className="flex space-x-3 mt-1">
                     {weatherData.forecast.map((day, index) => (
                         <div key={index} className="flex items-center">
-                            <day.icon className="size-5 mr-1 text-gray-300" />
-                            <span className="text-white">{day.temp}</span>
+                            <day.icon className="size-5 mr-1 text-muted-foreground" />
+                            <span className="text-foreground">{day.temp}</span>
                         </div>
                     ))}
                 </div>
@@ -120,19 +120,19 @@ export function News({ onMenuToggle }: NewsProps) {
         </div>
 
         {/* Navigation Bar */}
-        <nav className="border-y border-slate-800">
-            <div className="px-4 flex items-center space-x-6 text-sm text-gray-400 overflow-x-auto">
+        <nav className="border-y border-border">
+            <div className="px-4 flex items-center space-x-6 text-sm text-muted-foreground overflow-x-auto">
               {navLinks.map((link) => (
                 <a
                   href="#"
                   key={link}
-                  className={`py-2 hover:text-white transition-colors relative whitespace-nowrap ${
-                    link === "Home" ? "text-white" : ""
+                  className={`py-2 hover:text-foreground transition-colors relative whitespace-nowrap ${
+                    link === "Home" ? "text-foreground" : ""
                   }`}
                 >
                   {link}
                   {link === "Home" && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white rounded-full"></span>
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-foreground rounded-full"></span>
                   )}
                 </a>
               ))}
@@ -140,8 +140,8 @@ export function News({ onMenuToggle }: NewsProps) {
         </nav>
 
         {/* Crypto Ticker */}
-        <div className="bg-slate-950/50 flex items-center p-2 border-b border-slate-800 overflow-hidden">
-            <span className="bg-red-600 text-white text-xs font-semibold px-4 py-2 rounded-r-full -ml-2 mr-4 shrink-0">
+        <div className="bg-accent/50 flex items-center p-2 border-b border-border overflow-hidden">
+            <span className="bg-destructive text-destructive-foreground text-xs font-semibold px-4 py-2 rounded-r-full -ml-2 mr-4 shrink-0">
                 Crypto Price
             </span>
             <div className="flex-grow overflow-hidden whitespace-nowrap">
@@ -150,8 +150,8 @@ export function News({ onMenuToggle }: NewsProps) {
                     <div key={`crypto-${index}`} className="flex items-center space-x-2 text-xs shrink-0">
                         <span className="font-bold text-lg text-yellow-400">B</span>
                         <div>
-                            <p className="text-gray-400">{crypto.name}</p>
-                            <p className="font-semibold text-white">{crypto.price}</p>
+                            <p className="text-muted-foreground">{crypto.name}</p>
+                            <p className="font-semibold text-foreground">{crypto.price}</p>
                         </div>
                         <div className={`text-xs font-semibold px-2 py-1 rounded-md ${crypto.isUp ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                             {crypto.isUp ? '▲' : '▼'} {crypto.change}
@@ -169,7 +169,7 @@ export function News({ onMenuToggle }: NewsProps) {
           {/* Left/Main Content Area */}
           <div className="lg:col-span-2 xl:col-span-3 space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-white flex items-center">
+                <h2 className="text-xl font-semibold text-foreground flex items-center">
                     Latest News <ChevronRight className="size-5 mt-1" />
                 </h2>
             </div>
@@ -177,43 +177,43 @@ export function News({ onMenuToggle }: NewsProps) {
             {/* Top Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Featured Article */}
-                <Card className="bg-card border-slate-700 rounded-lg overflow-hidden flex flex-col justify-end h-[300px] p-4 relative">
+                <Card className="bg-card border-border rounded-lg overflow-hidden flex flex-col justify-end h-[300px] p-4 relative">
                     <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 to-black/20" />
                     <div className="relative z-10">
                         {mainArticle.insider && <span className="text-xs bg-blue-500 text-white font-semibold px-2 py-1 rounded-sm mb-2 inline-block">INSIDER</span>}
-                        <h3 className="text-xl font-bold text-white">{mainArticle.title}</h3>
-                        <p className="text-xs text-gray-400 mt-2">{mainArticle.time} - {mainArticle.author}</p>
+                        <h3 className="text-xl font-bold text-foreground">{mainArticle.title}</h3>
+                        <p className="text-xs text-muted-foreground mt-2">{mainArticle.time} - {mainArticle.author}</p>
                     </div>
                 </Card>
 
                 {/* Headlines */}
-                <Card className="bg-card border-slate-700 rounded-lg p-4 flex flex-col">
+                <Card className="bg-card border-border rounded-lg p-4 flex flex-col">
                     <div className="space-y-3 flex-1">
                     {headlines.map((headline, index) => (
-                        <div key={index} className="border-b border-slate-700 pb-3 last:border-b-0">
-                            <a href="#" className="hover:text-white">
+                        <div key={index} className="border-b border-border pb-3 last:border-b-0">
+                            <a href="#" className="hover:text-foreground">
                                 <p className="text-xs text-blue-400 font-semibold">{headline.source}</p>
-                                <h4 className="font-semibold text-white mt-1">{headline.title}</h4>
-                                <p className="text-xs text-gray-400 mt-1">{headline.time} - {headline.author}</p>
+                                <h4 className="font-semibold text-foreground mt-1">{headline.title}</h4>
+                                <p className="text-xs text-muted-foreground mt-1">{headline.time} - {headline.author}</p>
                             </a>
                         </div>
                     ))}
                     </div>
-                    <Button variant="outline" className="mt-4 w-full border-slate-600 hover:bg-slate-700 text-white">Full Coverage</Button>
+                    <Button variant="outline" className="mt-4 w-full border-border hover:bg-accent text-foreground">Full Coverage</Button>
                 </Card>
             </div>
 
             {/* Article List */}
             <div className="space-y-4">
                 {listArticles.map((article, index) => (
-                    <Card key={index} className="bg-card border-slate-700 rounded-lg p-3 flex items-center justify-between">
+                    <Card key={index} className="bg-card border-border rounded-lg p-3 flex items-center justify-between">
                         <div>
                             <p className="text-xs text-blue-400 font-semibold">{article.source}</p>
-                            <h4 className="font-semibold text-white mt-1">{article.title}</h4>
-                            <p className="text-xs text-gray-400 mt-1">{article.author} - {article.time}</p>
+                            <h4 className="font-semibold text-foreground mt-1">{article.title}</h4>
+                            <p className="text-xs text-muted-foreground mt-1">{article.author} - {article.time}</p>
                         </div>
-                        <div className="w-24 h-24 bg-slate-800 rounded-md ml-4 flex items-center justify-center">
-                          <Newspaper className="size-8 text-slate-600" />
+                        <div className="w-24 h-24 bg-accent rounded-md ml-4 flex items-center justify-center">
+                          <Newspaper className="size-8 text-muted-foreground" />
                         </div>
                     </Card>
                 ))}
@@ -224,9 +224,9 @@ export function News({ onMenuToggle }: NewsProps) {
         {/* Right Sidebar */}
         <div className="lg:col-span-1 space-y-6">
           {/* Live Scores */}
-          <Card className="bg-card border-slate-700 p-4 rounded-lg relative">
+          <Card className="bg-card border-border p-4 rounded-lg relative">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold text-white">Live Scores</h3>
+                <h3 className="font-semibold text-foreground">Live Scores</h3>
                 <span className="flex items-center text-xs text-red-400 font-semibold">
                     <span className="w-2 h-2 bg-red-500 rounded-full mr-1.5 animate-pulse"></span>
                     Live
@@ -235,30 +235,30 @@ export function News({ onMenuToggle }: NewsProps) {
             <div className="space-y-4">
               {liveScores.map((match, index) => (
                 <div key={index}>
-                  <p className="text-xs text-gray-400 mb-2">{match.tournament} - {match.matchInfo}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{match.tournament} - {match.matchInfo}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                        <div className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center">
-                          <span className="text-xs text-slate-400">{match.team1.name}</span>
+                        <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                          <span className="text-xs text-muted-foreground">{match.team1.name}</span>
                         </div>
                         <span className="font-semibold">{match.team1.name}</span>
-                        <span className="text-sm text-gray-400">{match.team1.overs}</span>
+                        <span className="text-sm text-muted-foreground">{match.team1.overs}</span>
                     </div>
-                    <span className="text-lg font-bold text-white">{match.team1.score}</span>
+                    <span className="text-lg font-bold text-foreground">{match.team1.score}</span>
                   </div>
                   <div className="relative text-center my-1">
-                    <span className="text-xs bg-slate-700 text-white px-2 py-0.5 rounded-full z-10 relative">VS</span>
-                    <Separator className="absolute top-1/2 -translate-y-1/2 w-full bg-slate-700"/>
+                    <span className="text-xs bg-accent text-foreground px-2 py-0.5 rounded-full z-10 relative">VS</span>
+                    <Separator className="absolute top-1/2 -translate-y-1/2 w-full bg-border"/>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                        <div className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center">
-                          <span className="text-xs text-slate-400">{match.team2.name}</span>
+                        <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                          <span className="text-xs text-muted-foreground">{match.team2.name}</span>
                         </div>
                         <span className="font-semibold">{match.team2.name}</span>
-                        <span className="text-sm text-gray-400">{match.team2.overs}</span>
+                        <span className="text-sm text-muted-foreground">{match.team2.overs}</span>
                     </div>
-                    <span className="text-lg font-bold text-white">{match.team2.score}</span>
+                    <span className="text-lg font-bold text-foreground">{match.team2.score}</span>
                   </div>
                   <p className="text-xs text-orange-400 mt-2 text-center">{match.status}</p>
                 </div>
@@ -267,20 +267,20 @@ export function News({ onMenuToggle }: NewsProps) {
           </Card>
 
           {/* Now Playing */}
-          <Card className="bg-card border-slate-700 p-4 rounded-lg">
-             <div className="flex items-center border-b border-slate-700 mb-4">
-                <Button variant="ghost" className="text-white font-semibold border-b-2 border-white rounded-none">Now Playing</Button>
-                <Button variant="ghost" className="text-gray-400 hover:text-white">Upcoming</Button>
+          <Card className="bg-card border-border p-4 rounded-lg">
+             <div className="flex items-center border-b border-border mb-4">
+                <Button variant="ghost" className="text-foreground font-semibold border-b-2 border-foreground rounded-none">Now Playing</Button>
+                <Button variant="ghost" className="text-muted-foreground hover:text-foreground">Upcoming</Button>
             </div>
             <div className="space-y-4">
               {nowPlaying.map((movie, index) => (
                 <div key={index} className="flex space-x-4">
-                    <div className="w-20 h-28 bg-slate-800 rounded-md flex items-center justify-center">
-                      <Film className="size-8 text-slate-600" />
+                    <div className="w-20 h-28 bg-accent rounded-md flex items-center justify-center">
+                      <Film className="size-8 text-muted-foreground" />
                     </div>
                     <div>
-                        <h4 className="font-semibold text-white">{movie.title}</h4>
-                        <div className="text-xs text-gray-400 mt-2 space-y-1">
+                        <h4 className="font-semibold text-foreground">{movie.title}</h4>
+                        <div className="text-xs text-muted-foreground mt-2 space-y-1">
                             <div className="flex items-center"><Star className="size-3 mr-1.5 text-yellow-400"/> {movie.rating}</div>
                             <div className="flex items-center"><Film className="size-3 mr-1.5"/> {movie.genre}</div>
                             <div className="flex items-center"><Clock className="size-3 mr-1.5"/> {movie.duration}</div>

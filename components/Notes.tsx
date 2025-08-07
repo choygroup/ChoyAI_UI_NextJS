@@ -95,73 +95,73 @@ export function Notes() {
   const [view, setView] = useState<'list' | 'card'>("list");
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <aside className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col">
-        <div className="p-4 border-b border-zinc-800">
-          <Input placeholder="Search" className="bg-zinc-900 border-zinc-700 text-white" />
-          <Button className="w-full mt-3 bg-zinc-800 hover:bg-zinc-700 text-white border-zinc-700" variant="secondary">
+      <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col">
+        <div className="p-4 border-b border-border">
+          <Input placeholder="Search" className="bg-background border-border text-foreground" />
+          <Button className="w-full mt-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground border-border" variant="secondary">
             <Plus className="mr-2 size-4" /> New note
           </Button>
         </div>
-        <div className="p-4 border-b border-zinc-800">
-          <div className="text-xs text-zinc-400 mb-2">Pinned</div>
+        <div className="p-4 border-b border-border">
+          <div className="text-xs text-muted-foreground mb-2">Pinned</div>
           <ul className="space-y-1">
             {pinned.map((item) => (
-              <li key={item} className="text-sm text-white/90 hover:bg-zinc-800 rounded px-2 py-1 cursor-pointer">{item}</li>
+              <li key={item} className="text-sm text-muted-foreground hover:bg-accent/10 rounded px-2 py-1 cursor-pointer">{item}</li>
             ))}
           </ul>
         </div>
         <div className="p-4 flex-1 overflow-y-auto">
-          <div className="text-xs text-zinc-400 mb-2">Objects</div>
+          <div className="text-xs text-muted-foreground mb-2">Objects</div>
           <ul className="space-y-1">
             {objects.map((item) => (
-              <li key={item} className="text-sm text-white/90 hover:bg-zinc-800 rounded px-2 py-1 cursor-pointer flex items-center">
+              <li key={item} className="text-sm text-muted-foreground hover:bg-accent/10 rounded px-2 py-1 cursor-pointer flex items-center">
                 <span className="mr-2">{item === "Notes" ? <span className="w-2 h-2 bg-blue-500 rounded-full inline-block mr-2" /> : null}</span>
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <div className="p-4 border-t border-zinc-800 text-xs text-zinc-400">Tags</div>
+        <div className="p-4 border-t border-border text-xs text-muted-foreground">Tags</div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="flex-1 flex flex-col">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-background">
+        <div className="flex items-center justify-between p-4 border-b border-border bg-background">
           <div className="flex items-center space-x-3">
-            <h1 className="text-2xl font-bold text-white">Notes</h1>
+            <h1 className="text-2xl font-bold text-foreground">Notes</h1>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')} className="hover:bg-zinc-800"><List className="size-5" /></Button>
-            <Button variant={view === 'card' ? "secondary" : "ghost"} size="icon" onClick={() => setView('card')} className="hover:bg-zinc-800"><LayoutGrid className="size-5" /></Button>
-            <Button variant="secondary" className="ml-2 bg-zinc-800 hover:bg-zinc-700 border-zinc-700"><Plus className="mr-2 size-4" /> New</Button>
+            <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')} className="hover:bg-accent/10"><List className="size-5" /></Button>
+            <Button variant={view === 'card' ? "secondary" : "ghost"} size="icon" onClick={() => setView('card')} className="hover:bg-accent/10"><LayoutGrid className="size-5" /></Button>
+            <Button variant="secondary" className="ml-2 bg-secondary hover:bg-secondary/80 border-border"><Plus className="mr-2 size-4" /> New</Button>
           </div>
         </div>
 
         {/* Main Area */}
-        <div className="p-6">
+        <div className="flex-1 p-6">
           <div className="max-w-[1600px] mx-auto">
           {view === 'list' ? (
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm text-left border-collapse">
                 <thead>
-                  <tr className="bg-zinc-900 text-zinc-400">
-                    <th className="px-4 py-2 font-semibold border-b border-zinc-800">#</th>
+                  <tr className="bg-muted/50 text-muted-foreground">
+                    <th className="px-4 py-2 font-semibold border-b border-border">#</th>
                     {columns.map((col) => (
-                      <th key={col} className="px-4 py-2 font-semibold border-b border-zinc-800">{col}</th>
+                      <th key={col} className="px-4 py-2 font-semibold border-b border-border">{col}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {notes.map((note, idx) => (
-                    <tr key={note.id} className="border-b border-zinc-800 hover:bg-zinc-900 transition-colors">
-                      <td className="px-4 py-2 text-zinc-400">{idx + 1}</td>
-                      <td className="px-4 py-2 text-white font-medium cursor-pointer hover:underline">{note.title}</td>
-                      <td className="px-4 py-2 text-zinc-400">{note.tags.join(", ")}</td>
-                      <td className="px-4 py-2 text-zinc-400">{note.updated}</td>
-                      <td className="px-4 py-2 text-zinc-400">{note.created}</td>
+                    <tr key={note.id} className="border-b border-border hover:bg-accent/10 transition-colors">
+                      <td className="px-4 py-2 text-muted-foreground">{idx + 1}</td>
+                      <td className="px-4 py-2 text-foreground font-medium cursor-pointer hover:underline">{note.title}</td>
+                      <td className="px-4 py-2 text-muted-foreground">{note.tags.join(", ")}</td>
+                      <td className="px-4 py-2 text-muted-foreground">{note.updated}</td>
+                      <td className="px-4 py-2 text-muted-foreground">{note.created}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -170,15 +170,10 @@ export function Notes() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {notes.map((note) => (
-                <Card key={note.id} className="bg-zinc-900 border-zinc-800 rounded-lg p-4 flex flex-col h-48 hover:bg-zinc-800 transition-colors">
-                  <div className="flex items-center mb-2">
-                    <span className="text-xs bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded mr-2">Notes</span>
-                    <span className="text-xs text-zinc-400 ml-auto">{note.updated}</span>
-                  </div>
-                  <h2 className="font-semibold text-white text-base mb-1 line-clamp-2">{note.title}</h2>
-                  <div className="text-xs text-zinc-400 mb-2 line-clamp-3">{note.content}</div>
-                  <div className="mt-auto flex items-center justify-between">
-                    <span className="text-xs text-zinc-500 italic">No tags</span>
+                <Card key={note.id} className="bg-card border-border rounded-lg p-4 flex flex-col h-40 hover:bg-accent/10 transition-colors cursor-pointer">
+                  <h2 className="font-semibold text-foreground text-sm mb-3 line-clamp-3 flex-1">{note.title}</h2>
+                  <div className="mt-auto">
+                    <span className="text-xs text-muted-foreground">{note.created}</span>
                   </div>
                 </Card>
               ))}

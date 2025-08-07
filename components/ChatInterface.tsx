@@ -29,7 +29,7 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Top Bar */}
-      <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
@@ -43,10 +43,10 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
         </div>
         <div className="flex items-center space-x-2">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 size-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground size-4" />
             <Input 
               placeholder="Search conversations..." 
-              className="pl-10 w-64 bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-400"
+              className="pl-10 w-64 bg-background border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
@@ -58,13 +58,13 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
 
         {/* Welcome Message */}
         <div className="text-center space-y-2 mb-8">
-          <div className="size-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <Sparkles className="size-8 text-primary" />
+          <div className="size-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Sparkles className="size-10 text-primary" />
           </div>
-          <h1 className="text-3xl font-semibold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-3">
             Ask me anything...
           </h1>
-          <p className="text-muted-foreground max-w-md">
+          <p className="text-muted-foreground max-w-md text-lg">
             I'm here to help you with any questions or tasks you have in mind.
           </p>
         </div>

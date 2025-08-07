@@ -58,7 +58,7 @@ interface ToDoProps {
 
 export function ToDo({ onMenuToggle }: ToDoProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen bg-background text-foreground">
         {/* To-Do Sidebar */}
         <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col p-4 space-y-4">
             <Input placeholder="Search" className="bg-background border-border w-full" />
@@ -70,7 +70,7 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
                 <ul className="space-y-1">
                     {topNavItems.map(item => (
                         <li key={item.label}>
-                            <a href="#" className="flex items-center space-x-3 text-gray-300 hover:bg-accent/10 px-2 py-1.5 rounded-md text-sm">
+                            <a href="#" className="flex items-center space-x-3 text-muted-foreground hover:bg-accent/10 px-2 py-1.5 rounded-md text-sm">
                                 <item.icon className="size-4" />
                                 <span>{item.label}</span>
                                 {item.count && <span className="ml-auto text-xs bg-muted/50 text-muted-foreground px-1.5 rounded-full">{item.count}</span>}
@@ -80,14 +80,14 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
                 </ul>
 
                 <div className="pt-4">
-                    <h3 className="text-xs font-semibold text-gray-500 mb-2 px-2">My Projects <span className="text-xs ml-1">USED: 5/5</span></h3>
+                    <h3 className="text-xs font-semibold text-muted-foreground mb-2 px-2">My Projects <span className="text-xs ml-1">USED: 5/5</span></h3>
                     <ul className="space-y-1">
                         {projects.map(project => (
                              <li key={project.name}>
-                                <a href="#" className={`flex items-center space-x-3 text-sm px-2 py-1.5 rounded-md ${project.active ? 'bg-destructive/90 text-white' : 'text-gray-300 hover:bg-accent/10'}`}>
+                                <a href="#" className={`flex items-center space-x-3 text-sm px-2 py-1.5 rounded-md ${project.active ? 'bg-destructive/90 text-destructive-foreground' : 'text-muted-foreground hover:bg-accent/10'}`}>
                                     <span className="font-mono text-muted-foreground">#</span>
                                     <span>{project.name}</span>
-                                    <span className="ml-auto text-xs text-gray-400">{project.count}</span>
+                                    <span className="ml-auto text-xs text-muted-foreground">{project.count}</span>
                                 </a>
                             </li>
                         ))}
@@ -97,7 +97,7 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1">
+        <main className="flex-1 flex flex-col">
             {/* Top Bar */}
             <div className="flex items-center justify-between p-4 border-b border-border">
                 <div className="flex items-center space-x-4">
@@ -109,7 +109,7 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
                     >
                         <Menu className="size-4" />
                     </Button>
-                    <h1 className="text-xl font-bold">Task</h1>
+                    <h1 className="text-2xl font-bold text-foreground">Task</h1>
                 </div>
                 <div className="flex items-center space-x-2">
                     <Button variant="ghost" size="sm" className="text-muted-foreground">
@@ -120,40 +120,50 @@ export function ToDo({ onMenuToggle }: ToDoProps) {
             </div>
 
             {/* Task Board */}
-            <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1600px] mx-auto">
-                {taskSections.map((section) => (
-                <div key={section.title} className="space-y-4">
-                    <div className="flex justify-between items-center">
-                    <div className="flex items-center space-x-2">
-                        <h2 className="font-semibold">{section.title}</h2>
-                        <span className="text-sm text-muted-foreground">{section.count}</span>
+            <div className="flex-1 p-4">
+                
+                {/* Task Board */}
+                <div className="flex gap-6 overflow-x-auto pb-4 min-w-0">
+                    {taskSections.map((section) => (
+                    <div key={section.title} className="space-y-4 min-w-[300px] flex-shrink-0">
+                        <div className="flex justify-between items-center">
+                        <div className="flex items-center space-x-2">
+                            <h2 className="font-semibold">{section.title}</h2>
+                            <span className="text-sm text-muted-foreground">{section.count}</span>
+                        </div>
+                        <Button variant="ghost" size="icon" className="text-muted-foreground">
+                            <MoreHorizontal className="size-4" />
+                        </Button>
+                        </div>
+                        <div className="space-y-2">
+                        {section.tasks.map((task, index) => (
+                            <Card key={index} className="bg-card border-border">
+                            <CardContent className="p-3 flex items-start space-x-3">
+                                <Checkbox id={`task-${section.title}-${index}`} className="mt-1 border-border" />
+                                <div className="flex-1">
+                                <label htmlFor={`task-${section.title}-${index}`} className="text-sm font-medium">{task.text}</label>
+                                {task.time && <p className="text-xs text-red-500 mt-1">{task.time}</p>}
+                                {task.subtext && <p className="text-xs text-muted-foreground mt-1">{task.subtext}</p>}
+                                </div>
+                            </CardContent>
+                            </Card>
+                        ))}
+                        </div>
+                        <Button variant="ghost" size="sm" className="w-full justify-start text-muted-foreground hover:text-foreground">
+                        <Plus className="mr-2 size-4" />
+                        Add task
+                        </Button>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-muted-foreground">
-                        <MoreHorizontal className="size-4" />
-                    </Button>
-                    </div>
-                    <div className="space-y-2">
-                    {section.tasks.map((task, index) => (
-                        <Card key={index} className="bg-card border-border">
-                        <CardContent className="p-3 flex items-start space-x-3">
-                            <Checkbox id={`task-${section.title}-${index}`} className="mt-1 border-border" />
-                            <div className="flex-1">
-                            <label htmlFor={`task-${section.title}-${index}`} className="text-sm font-medium">{task.text}</label>
-                            {task.time && <p className="text-xs text-red-500 mt-1">{task.time}</p>}
-                            {task.subtext && <p className="text-xs text-muted-foreground mt-1">{task.subtext}</p>}
-                            </div>
-                        </CardContent>
-                        </Card>
                     ))}
+                    
+                    {/* Add New Section Button */}
+                    <div className="min-w-[300px] flex-shrink-0 flex items-center justify-center">
+                      <Button variant="outline" className="w-full h-32 border-dashed border-border text-muted-foreground hover:text-foreground hover:border-foreground">
+                        <Plus className="mr-2 size-4" />
+                        Add section
+                      </Button>
                     </div>
-                    <Button variant="ghost" size="sm" className="w-full justify-start text-muted-foreground hover:text-white">
-                    <Plus className="mr-2 size-4" />
-                    Add task
-                    </Button>
                 </div>
-                ))}
-              </div>
             </div>
         </main>
     </div>
