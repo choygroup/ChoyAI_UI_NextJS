@@ -1,11 +1,11 @@
 
 # Choy AI UI/UX: Advanced Personal AI Assistant Interface
 
-[![Next.js](https://img.shields.io/badge/Next.js-14.2.30-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-blue)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-Apache_2.0-green)](./LICENSE)
+![Next.js](https://img.shields.io/badge/Next.js-14.2.30-black)
+![React](https://img.shields.io/badge/React-18-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.1-blue)
+![License](https://img.shields.io/badge/License-Apache%202.0-green)
 
 **Modern, responsive web interface for Choy AI's comprehensive productivity suite featuring 14 AI-powered modules**
 
