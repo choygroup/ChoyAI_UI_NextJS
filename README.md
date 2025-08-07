@@ -5,7 +5,7 @@
 [![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.1-blue)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green)](./LICENSE)
 
 **Modern, responsive web interface for Choy AI's comprehensive productivity suite featuring 14 AI-powered modules**
 
@@ -65,14 +65,6 @@ npm run dev
 ```
 
 The application will be available at `http://localhost:3000`
-
-### 🐳 Replit Deployment
-
-This project is optimized for Replit deployment:
-
-1. Fork this Repl
-2. The development server will start automatically
-3. Your app will be available at your Repl URL
 
 ## 🏗️ Architecture
 
@@ -266,30 +258,9 @@ The application can be deployed to:
 - **Netlify**: Static site deployment
 - **Railway**: Full-stack application hosting
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our contributing guidelines:
-
-### 📋 Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes following our code style
-4. Test your changes thoroughly
-5. Submit a pull request
-
-### 🎯 Contribution Areas
-
-- 🐛 Bug fixes and improvements
-- ✨ New UI components
-- 🎨 Design system enhancements
-- 📱 Mobile responsiveness
-- ♿ Accessibility improvements
-- 📚 Documentation updates
-
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
