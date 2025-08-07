@@ -9,7 +9,7 @@
 
 **Modern, responsive web interface for Choy AI's comprehensive productivity suite featuring 14 AI-powered modules**
 
-🎯 [Live Demo](https://choyai-ui.replit.app) • 📚 [Documentation](#documentation) • 🚀 [Quick Start](#quick-start) • ⚙️ [Components](#components) • 🤝 [Contributing](#contributing)
+🎯 [Live Demo](https://choyai-ui.replit.app) • 📚 [Documentation](#documentation) • 🚀 [Quick Start](#quick-start) • ⚙️ [Components](#components) 
 
 ## 🌟 Overview
 
