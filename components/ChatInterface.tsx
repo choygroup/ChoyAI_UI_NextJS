@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Card } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Menu, Send, Paperclip, Search, Sparkles, Plus, MoreHorizontal, Mic, Phone, Video } from "lucide-react";
+import { Menu, Send, Paperclip, Search, Sparkles, Plus, MoreHorizontal, Mic, Phone, Video, Monitor } from "lucide-react";
 
 interface ChatInterfaceProps {
   onMenuToggle: () => void;
@@ -127,6 +127,7 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
           </div>
 
 
+
         </div>
 
 
@@ -154,6 +155,9 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
             </Button>
             <Button variant="ghost" size="sm" title="Video call">
               <Video className="size-5" />
+            </Button>
+            <Button variant="ghost" size="sm" title="Screen share">
+              <Monitor className="size-5" />
             </Button>
             <Button variant="ghost" size="sm" title="Search">
               <Search className="size-5" />
@@ -234,6 +238,8 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
           </div>
         </div>
       </main>
+
+
     </div>
   );
 }
