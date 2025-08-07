@@ -41,7 +41,7 @@ const productivityItems = [
     label: "Reminders / Calendar", 
     href: "#", 
     tooltip: "Google Calendar",
-    comingSoon: true
+    comingSoon: false
   },
   { 
     icon: CheckSquare, 
@@ -153,7 +153,8 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
       const isCurrentlyActive = (currentView === "chat" && item.label === "Chat / Talk") || 
                                (currentView === "todo" && item.label === "Tasks / To-Do") ||
                                (currentView === "news" && item.label === "News") ||
-                               (currentView === "notes" && item.label === "Notes");
+                               (currentView === "notes" && item.label === "Notes") ||
+                               (currentView === "calendar" && item.label === "Reminders / Calendar");
       
       return (
         <Button

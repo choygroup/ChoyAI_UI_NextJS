@@ -7,6 +7,7 @@ import { ToDo } from "@/components/ToDo";
 import { News } from "@/components/News";
 import { Notes } from "@/components/Notes";
 import { ComingSoon } from "@/components/ComingSoon";
+import { Calendar } from "@/components/Calendar";
 
 export default function HomePage() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -25,6 +26,8 @@ export default function HomePage() {
       setCurrentView("news");
     } else if (item.label === "Notes") {
       setCurrentView("notes");
+    } else if (item.label === "Reminders / Calendar") {
+      setCurrentView("calendar");
     } else if (item.comingSoon) {
       setCurrentView("coming-soon");
     } else {
@@ -54,6 +57,8 @@ export default function HomePage() {
         return <News onMenuToggle={toggleSidebar} />;
       case "notes":
         return <Notes />;
+      case "calendar":
+        return <Calendar onMenuToggle={toggleSidebar} />;
       case "coming-soon":
         return (
           <ComingSoon 
