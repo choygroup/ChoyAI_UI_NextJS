@@ -102,8 +102,6 @@ The UI follows a comprehensive design system with:
 
 ## 🧩 Components
 
-### 🎯 Core Components
-
 | Component | Description | Features |
 |-----------|-------------|----------|
 | **Sidebar** | Navigation with 14 modules | Collapsible, responsive, active states |
@@ -268,7 +266,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 - **Tailwind CSS**: Utility-first CSS framework
 - **Lucide**: Beautiful & consistent icon library
 - **Next.js**: React framework for production
-- **Vercel**: Hosting and deployment platform
+- **Vercel**: Hosting and deployment platform [not fiexd yet]
 
 ## 📬 Support
 
@@ -280,7 +278,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 
 <div align="center">
 
-**[⭐ Star this repo](https://github.com/choyai/choyai-ui)** • **[🍴 Fork it](https://github.com/choyai/choyai-ui/fork)** • **[📢 Follow us](https://twitter.com/choyai)**
+**[⭐ Star this repo](https://github.com/choyai/choyai-ui)** • **[📢 Follow us](https://twitter.com/choyai)**
 
 *Built with ❤️ by the Choy AI team*
 
