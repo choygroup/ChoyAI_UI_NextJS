@@ -8,11 +8,14 @@ import { News } from "@/components/News";
 import { Notes } from "@/components/Notes";
 import { ComingSoon } from "@/components/ComingSoon";
 import { Calendar } from "@/components/Calendar";
+import { LoginPage } from "@/components/LoginPage";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 
-export default function HomePage() {
+function MainApp() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [currentView, setCurrentView] = useState("chat");
   const [selectedItem, setSelectedItem] = useState({ label: "Chat / Talk", tooltip: "Choy AI, your personal assistant" });
+  const { logout } = useAuth();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -97,4 +100,22 @@ export default function HomePage() {
       </div>
     </div>
   );
+}
+
+export default function HomePage() {
+  return (
+    <AuthProvider>
+      <AuthenticatedApp />
+    </AuthProvider>
+  );
+}
+
+function AuthenticatedApp() {
+  const { isAuthenticated, login } = useAuth();
+
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={login} />;
+  }
+
+  return <MainApp />;
 }

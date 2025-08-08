@@ -7,6 +7,14 @@
 
 🎯 [Live Demo](https://choyai-ui.replit.app) • 📚 [Documentation](#documentation) • 🚀 [Quick Start](#quick-start) • ⚙️ [Components](#components) 
 
+## 🔐 Demo Access
+
+**Demo Credentials for Testing:**
+- **Email:** `demo@choyai.com`
+- **Password:** `demochoyai`
+
+*Use these credentials to access the full application after deployment. Perfect for showcasing the interface without requiring real authentication.*
+
 ## 🌟 Overview
 
 Choy AI UI/UX is a sophisticated, enterprise-grade web interface built for the Choy AI personal assistant ecosystem. This React-based application provides an intuitive, responsive interface for managing 14 productivity modules, from AI chat to task management, news aggregation, and business tools.

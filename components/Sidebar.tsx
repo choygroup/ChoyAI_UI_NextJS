@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
@@ -160,6 +161,7 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentView }: SidebarProps) {
   const allItems = [...coreAIItems, ...productivityItems, ...businessFinanceItems, ...aiUtilityItems];
+  const { logout } = useAuth();
   
   // Settings state
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -574,17 +576,16 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             </p>
             
             <div className="space-y-3 pt-4">
-              <Button 
-                onClick={() => {
-                  // Add logout logic here
-                  console.log("Logging out...");
-                  setLogoutDialogOpen(false);
-                  setSettingsOpen(false);
-                }}
-                className="w-full bg-white text-black hover:bg-gray-100 border border-gray-300"
-              >
-                Log out
-              </Button>
+                             <Button 
+                 onClick={() => {
+                   logout();
+                   setLogoutDialogOpen(false);
+                   setSettingsOpen(false);
+                 }}
+                 className="w-full bg-white text-black hover:bg-gray-100 border border-gray-300"
+               >
+                 Log out
+               </Button>
               
               <Button 
                 variant="outline"
