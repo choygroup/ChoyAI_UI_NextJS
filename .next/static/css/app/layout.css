@@ -1641,6 +1641,9 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity, 1));
 }
+.border-gray-600\/50 {
+  border-color: rgb(75 85 99 / 0.5);
+}
 .border-input {
   border-color: var(--input-border);
 }
@@ -1661,9 +1664,6 @@ video {
 }
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
-}
-.border-gray-600\/50 {
-  border-color: rgb(75 85 99 / 0.5);
 }
 .border-l-transparent {
   border-left-color: transparent;
@@ -2324,6 +2324,9 @@ video {
 .ease-linear {
   transition-timing-function: linear;
 }
+.will-change-\[background-position\] {
+  will-change: background-position;
+}
 @keyframes enter {
 
   from {
@@ -2454,6 +2457,20 @@ video {
   --scrollbar-track: #18181b;
   --scrollbar-thumb: #232329;
   --scrollbar-thumb-hover: #313136;
+}
+
+/* Animated Shine Effect */
+@keyframes shine {
+  0% {
+    background-position: -150% 0%;
+  }
+  100% {
+    background-position: 150% 0%;
+  }
+}
+
+.animate-shine {
+  animation: shine 4s ease-in-out infinite;
 }
 
 ::-webkit-scrollbar {
@@ -2654,9 +2671,6 @@ video {
 .focus\:z-10:focus {
   z-index: 10;
 }
-.focus\:border-white\/40:focus {
-  border-color: rgb(255 255 255 / 0.4);
-}
 .focus\:border-gray-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));
@@ -2664,11 +2678,11 @@ video {
 .focus\:bg-accent:focus {
   background-color: var(--accent-bg);
 }
-.focus\:bg-primary:focus {
-  background-color: var(--btn-primary-bg);
-}
 .focus\:bg-black\/60:focus {
   background-color: rgb(0 0 0 / 0.6);
+}
+.focus\:bg-primary:focus {
+  background-color: var(--btn-primary-bg);
 }
 .focus\:text-accent-foreground:focus {
   color: var(--text-primary);
@@ -2686,11 +2700,6 @@ video {
 }
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
-}
-.focus\:backdrop-blur-md:focus {
-  --tw-backdrop-blur: blur(12px);
-  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .focus-visible\:z-10:focus-visible {
   z-index: 10;

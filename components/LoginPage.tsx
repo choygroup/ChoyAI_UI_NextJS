@@ -112,6 +112,22 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
         {/* Main Card with Karigor AI Style Glass Effect */}
         <div className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-2xl p-6 shadow-2xl relative z-10">
+          {/* Animated Glowing Outline */}
+          <div 
+            style={{
+              '--border-width': '1px',
+              '--duration': '4s',
+              backgroundImage: 'linear-gradient(90deg, transparent, #E5E7EB, #FFFFFF, #E5E7EB, transparent)',
+              backgroundSize: '200% 100%',
+              mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude',
+              padding: 'var(--border-width)'
+            } as React.CSSProperties}
+            className="pointer-events-none absolute inset-0 size-full rounded-[inherit] will-change-[background-position] motion-safe:animate-shine"
+          ></div>
+          
           {/* Mode Toggle */}
           <div className="flex mb-6 bg-black/20 backdrop-blur-sm rounded-xl p-1 border border-white/10">
             <button

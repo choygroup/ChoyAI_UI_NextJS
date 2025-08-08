@@ -96,6 +96,20 @@
   }
 }
 
+/* Animated Shine Effect */
+@keyframes shine {
+  0% {
+    background-position: -150% 0%;
+  }
+  100% {
+    background-position: 150% 0%;
+  }
+}
+
+.animate-shine {
+  animation: shine 4s ease-in-out infinite;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
