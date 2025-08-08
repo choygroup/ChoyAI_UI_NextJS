@@ -16,13 +16,17 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     e.preventDefault();
     setIsLoading(true);
     
+    console.log("LoginPage - Form submitted:", { email, password });
+    
     // Simulate loading
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Demo credentials check
     if (email === "demo@choyai.com" && password === "demochoyai") {
+      console.log("LoginPage - Credentials match, calling onLogin");
       onLogin({ email, password });
     } else {
+      console.log("LoginPage - Credentials don't match");
       alert("Demo credentials:\nEmail: demo@choyai.com\nPassword: demochoyai");
     }
     
@@ -39,7 +43,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
       <div className="w-full max-w-md space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-white">Try ChoyAI for free!</h1>
+          <h1 className="text-4xl font-bold text-white">Try Choy AI for free!</h1>
           <p className="text-gray-400 text-lg">Log in with Google, Microsoft, or Apple.</p>
         </div>
 

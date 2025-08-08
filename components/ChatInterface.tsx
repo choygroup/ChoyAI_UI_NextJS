@@ -3,7 +3,36 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Card } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Menu, Send, Paperclip, Search, Sparkles, Plus, MoreHorizontal, Mic, Phone, Video, Monitor } from "lucide-react";
+import { 
+  Menu, 
+  Send, 
+  Paperclip, 
+  Search, 
+  Sparkles, 
+  Plus, 
+  MoreHorizontal, 
+  Mic, 
+  Phone, 
+  Video, 
+  Monitor,
+  Info,
+  CheckSquare,
+  VolumeX,
+  Clock,
+  Heart,
+  X,
+  ThumbsDown,
+  CircleSlash,
+  MinusCircle,
+  Trash2
+} from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 interface ChatInterfaceProps {
   onMenuToggle: () => void;
@@ -55,6 +84,7 @@ const conversationHistory = [
 export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
   const [message, setMessage] = useState("");
   const [selectedPersona, setSelectedPersona] = useState(personas[0]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleSendMessage = () => {
     if (message.trim()) {
@@ -162,9 +192,56 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
             <Button variant="ghost" size="sm" title="Search">
               <Search className="size-5" />
             </Button>
-            <Button variant="ghost" size="sm" title="More options">
-              <MoreHorizontal className="size-5" />
-            </Button>
+            <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" title="More options">
+                  <MoreHorizontal className="size-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem>
+                  <Info className="size-4 mr-2" />
+                  Contact info
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CheckSquare className="size-4 mr-2" />
+                  Select messages
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <VolumeX className="size-4 mr-2" />
+                  Mute notifications
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Clock className="size-4 mr-2" />
+                  Disappearing messages
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Heart className="size-4 mr-2" />
+                  Add to favorites
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <X className="size-4 mr-2" />
+                  Close chat
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <ThumbsDown className="size-4 mr-2" />
+                  Report
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CircleSlash className="size-4 mr-2" />
+                  Block
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <MinusCircle className="size-4 mr-2" />
+                  Clear chat
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Trash2 className="size-4 mr-2" />
+                  Delete chat
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
 
