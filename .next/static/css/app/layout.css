@@ -3571,6 +3571,21 @@ video {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+.\[\&\:-webkit-autofill\]\:bg-black\/40:-webkit-autofill {
+  background-color: rgb(0 0 0 / 0.4);
+}
+.\[\&\:-webkit-autofill\]\:text-white:-webkit-autofill {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.\[\&\:-webkit-autofill\]\:shadow-\[0_0_0_30px_rgba\(0\2c 0\2c 0\2c 0\.4\)_inset\]:-webkit-autofill {
+  --tw-shadow: 0 0 0 30px rgba(0,0,0,0.4) inset;
+  --tw-shadow-colored: inset 0 0 0 30px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.\[\&\:-webkit-autofill\]\:\[-webkit-text-fill-color\:white\]:-webkit-autofill {
+  -webkit-text-fill-color: white;
+}
 .\[\&\:has\(\>\.day-range-end\)\]\:rounded-r-md:has(>.day-range-end) {
   border-top-right-radius: calc(var(--radius) - 2px);
   border-bottom-right-radius: calc(var(--radius) - 2px);

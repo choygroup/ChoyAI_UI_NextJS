@@ -170,7 +170,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-10 bg-black/40 backdrop-blur-sm border-gray-600/50 text-white placeholder-gray-400 focus:border-gray-500 focus:bg-black/60 transition-all duration-300 rounded-xl text-sm relative z-10"
+                className="w-full h-10 bg-black/40 backdrop-blur-sm border-gray-600/50 text-white placeholder-gray-400 focus:border-gray-500 focus:bg-black/60 transition-all duration-300 rounded-xl text-sm relative z-10 [&:-webkit-autofill]:bg-black/40 [&:-webkit-autofill]:text-white [&:-webkit-autofill]:shadow-[0_0_0_30px_rgba(0,0,0,0.4)_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                 required
               />
             </div>
@@ -185,7 +185,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full h-10 bg-black/40 backdrop-blur-sm border-gray-600/50 text-white placeholder-gray-400 focus:border-gray-500 focus:bg-black/60 pr-10 transition-all duration-300 rounded-xl text-sm relative z-10"
+                  className="w-full h-10 bg-black/40 backdrop-blur-sm border-gray-600/50 text-white placeholder-gray-400 focus:border-gray-500 focus:bg-black/60 pr-10 transition-all duration-300 rounded-xl text-sm relative z-10 [&:-webkit-autofill]:bg-black/40 [&:-webkit-autofill]:text-white [&:-webkit-autofill]:shadow-[0_0_0_30px_rgba(0,0,0,0.4)_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   required
                 />
                 <button
