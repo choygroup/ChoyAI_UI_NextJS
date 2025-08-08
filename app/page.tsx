@@ -8,13 +8,14 @@ import { News } from "@/components/News";
 import { Notes } from "@/components/Notes";
 import { ComingSoon } from "@/components/ComingSoon";
 import { Calendar } from "@/components/Calendar";
+import { Dashboard } from "@/components/Dashboard";
 import { LoginPage } from "@/components/LoginPage";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 
 function MainApp() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [currentView, setCurrentView] = useState("chat");
-  const [selectedItem, setSelectedItem] = useState({ label: "Chat / Talk", tooltip: "Choy AI, your personal assistant" });
+  const [currentView, setCurrentView] = useState("dashboard");
+  const [selectedItem, setSelectedItem] = useState({ label: "Dashboard", tooltip: "Your personal dashboard" });
   const { logout } = useAuth();
 
   const toggleSidebar = () => {
@@ -23,7 +24,9 @@ function MainApp() {
 
   const handleNavigation = (item: any) => {
     setSelectedItem(item);
-    if (item.label === "Tasks / To-Do") {
+    if (item.label === "Dashboard") {
+      setCurrentView("dashboard");
+    } else if (item.label === "Tasks / To-Do") {
       setCurrentView("todo");
     } else if (item.label === "News") {
       setCurrentView("news");
@@ -52,6 +55,8 @@ function MainApp() {
 
   const renderContent = () => {
     switch (currentView) {
+      case "dashboard":
+        return <Dashboard onMenuToggle={toggleSidebar} />;
       case "chat":
         return <ChatInterface onMenuToggle={toggleSidebar} />;
       case "todo":
@@ -71,7 +76,7 @@ function MainApp() {
           />
         );
       default:
-        return <ChatInterface onMenuToggle={toggleSidebar} />;
+        return <Dashboard onMenuToggle={toggleSidebar} />;
     }
   };
 

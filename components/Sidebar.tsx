@@ -39,11 +39,19 @@ import {
 // Core AI Section
 const coreAIItems = [
   { 
+    icon: Calendar, 
+    label: "Dashboard", 
+    href: "#", 
+    tooltip: "Your personal dashboard",
+    active: true,
+    comingSoon: false
+  },
+  { 
     icon: MessageSquare, 
     label: "Chat / Talk", 
     href: "#", 
     tooltip: "Choy AI, your personal assistant",
-    active: true,
+    active: false,
     comingSoon: false
   },
 ];
@@ -181,7 +189,8 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
 
   const renderNavItems = (items: any[]) => {
     return items.map((item) => {
-      const isCurrentlyActive = (currentView === "chat" && item.label === "Chat / Talk") || 
+      const isCurrentlyActive = (currentView === "dashboard" && item.label === "Dashboard") ||
+                               (currentView === "chat" && item.label === "Chat / Talk") || 
                                (currentView === "todo" && item.label === "Tasks / To-Do") ||
                                (currentView === "news" && item.label === "News") ||
                                (currentView === "notes" && item.label === "Notes") ||
