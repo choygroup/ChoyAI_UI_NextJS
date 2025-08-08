@@ -34,6 +34,7 @@ export function ComingSoon({ onMenuToggle, title, description }: ComingSoonProps
       {/* Top Bar */}
       <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center space-x-4">
+          <h1 className="text-lg font-semibold text-foreground">{title}</h1>
         </div>
       </div>
 

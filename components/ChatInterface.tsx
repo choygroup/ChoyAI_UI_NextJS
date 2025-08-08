@@ -166,31 +166,31 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
       {/* Main Chat Area */}
       <main className="flex-1 flex flex-col w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-6 border-b border-border">
+        <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="flex items-center space-x-3">
-            <Avatar className="size-10">
+            <Avatar className="size-8">
               <AvatarImage src={selectedPersona.avatar} />
-              <AvatarFallback className="bg-primary text-primary-foreground text-sm font-semibold">
+              <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
                 {selectedPersona.name.split(' ').map(n => n[0]).join('')}
               </AvatarFallback>
             </Avatar>
-                           <div>
-                 <h1 className="text-lg font-semibold">{selectedPersona.name}</h1>
-                 <p className="text-xs text-muted-foreground">Online</p>
-               </div>
+            <div>
+              <h1 className="text-lg font-semibold">{selectedPersona.name}</h1>
+              <p className="text-xs text-muted-foreground">Online</p>
+            </div>
           </div>
           <div className="flex items-center space-x-2">
             <Button variant="ghost" size="sm" title="Audio call">
-              <Phone className="size-5" />
+              <Phone className="size-4" />
             </Button>
             <Button variant="ghost" size="sm" title="Video call">
-              <Video className="size-5" />
+              <Video className="size-4" />
             </Button>
             <Button variant="ghost" size="sm" title="Screen share">
-              <Monitor className="size-5" />
+              <Monitor className="size-4" />
             </Button>
             <Button variant="ghost" size="sm" title="Search">
-              <Search className="size-5" />
+              <Search className="size-4" />
             </Button>
             <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
               <DropdownMenuTrigger asChild>
@@ -258,17 +258,17 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
                   </AvatarFallback>
                 </Avatar>
                 <div className="text-left">
-                  <h2 className="text-2xl font-bold">{selectedPersona.name}</h2>
+                  <h1 className="text-2xl font-bold">{selectedPersona.name}</h1>
                   <p className="text-sm text-muted-foreground">{selectedPersona.description}</p>
                 </div>
               </div>
 
               <div className="space-y-3 max-w-md">
-                <h1 className="text-xl font-semibold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">
+                <h2 className="text-xl font-semibold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">
                   {selectedPersona.id === 'choy' ? 'Ask me anything...' : 
                    selectedPersona.id === 'tony' ? 'Ready to innovate?' :
                    'Let\'s have a meaningful conversation...'}
-                </h1>
+                </h2>
                 <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
                   {selectedPersona.id === 'choy' ? 'I\'m here to help you with any questions or tasks you have in mind.' :
                    selectedPersona.id === 'tony' ? 'Let\'s build something extraordinary together. What\'s your next big idea?' :

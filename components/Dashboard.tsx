@@ -721,14 +721,14 @@ export function Dashboard({ onMenuToggle }: DashboardProps) {
   return (
     <div className="flex h-screen bg-background text-foreground">
       {/* Main Dashboard Content */}
-      <main className="flex-1 p-4 overflow-auto">
+      <main className="flex-1 overflow-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="flex items-center space-x-3">
             <Button variant="ghost" size="sm" onClick={onMenuToggle} className="md:hidden">
-              <Calendar className="size-5" />
+              <Calendar className="size-4" />
             </Button>
-            <h1 className="text-2xl font-bold">Dashboard</h1>
+            <h1 className="text-lg font-semibold">Dashboard</h1>
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-sm text-muted-foreground">Thursday, August 7, 2025</span>

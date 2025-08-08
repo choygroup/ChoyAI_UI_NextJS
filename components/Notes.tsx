@@ -133,13 +133,13 @@ export function Notes({ onMenuToggle }: NotesProps) {
       {/* Main Content */}
       <main className="flex-1 flex flex-col w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-6 border-b border-border bg-background">
+        <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="flex items-center space-x-3">
-            <h1 className="text-2xl font-bold text-foreground">Notes</h1>
+            <h1 className="text-lg font-semibold text-foreground">Notes</h1>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')} className="hover:bg-accent/10"><List className="size-5" /></Button>
-            <Button variant={view === 'card' ? "secondary" : "ghost"} size="icon" onClick={() => setView('card')} className="hover:bg-accent/10"><LayoutGrid className="size-5" /></Button>
+            <Button variant={view === 'list' ? "secondary" : "ghost"} size="icon" onClick={() => setView('list')} className="hover:bg-accent/10"><List className="size-4" /></Button>
+            <Button variant={view === 'card' ? "secondary" : "ghost"} size="icon" onClick={() => setView('card')} className="hover:bg-accent/10"><LayoutGrid className="size-4" /></Button>
             <Button variant="secondary" className="ml-2 bg-secondary hover:bg-secondary/80 border-border"><Plus className="mr-2 size-4" /> New</Button>
           </div>
         </div>

@@ -80,11 +80,11 @@ export function News({ onMenuToggle }: NewsProps) {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans w-full">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center space-x-2">
             <div>
-                <h1 className="text-2xl font-bold text-foreground">Choy News</h1>
+                <h1 className="text-lg font-semibold text-foreground">Choy News</h1>
                 <p className="text-xs text-muted-foreground">Sunday, Jun 25, 2024</p>
             </div>
           </div>
@@ -95,19 +95,19 @@ export function News({ onMenuToggle }: NewsProps) {
                 placeholder="Search"
                 className="bg-background border-border rounded-full w-full text-foreground"
               />
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 size-5 text-muted-foreground" />
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             </div>
           </div>
 
           <div className="hidden sm:flex items-center space-x-2">
             <p className="text-3xl font-bold text-foreground">{weatherData.current.temp}</p>
-            <weatherData.current.icon className="size-8 text-yellow-400" />
+            <weatherData.current.icon className="size-6 text-yellow-400" />
             <div className="text-xs">
                 <p className="text-foreground">{weatherData.cities.join(' • ')}</p>
                 <div className="flex space-x-3 mt-1">
                     {weatherData.forecast.map((day, index) => (
                         <div key={index} className="flex items-center">
-                            <day.icon className="size-5 mr-1 text-muted-foreground" />
+                            <day.icon className="size-4 mr-1 text-muted-foreground" />
                             <span className="text-foreground">{day.temp}</span>
                         </div>
                     ))}
