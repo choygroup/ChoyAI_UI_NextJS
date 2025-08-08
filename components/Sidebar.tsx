@@ -33,7 +33,8 @@ import {
   ChevronDown,
   Shield,
   Database,
-  Smartphone
+  Smartphone,
+  CreditCard
 } from "lucide-react";
 
 // Core AI Section
@@ -351,25 +352,36 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
                 </Button>
               </DialogTrigger>
               
-              {/* Settings Modal */}
-              <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden p-0">
-                <div className="flex h-[600px]">
+                             {/* Settings Modal */}
+               <DialogContent 
+                 className="!w-[819px] !h-[700px] overflow-hidden p-0 !max-w-none !min-w-[819px] !w-[819px] !max-w-[819px] !grid-cols-none !sm:max-w-none !md:max-w-none !lg:max-w-none !xl:max-w-none !2xl:max-w-none !w-full-[819px]"
+                 style={{ 
+                   width: '819px', 
+                   maxWidth: '819px', 
+                   minWidth: '819px',
+                   transform: 'translate(-50%, -50%)',
+                   left: '50%',
+                   top: '50%'
+                 }}
+               >
+                <div className="flex h-full">
                   {/* Settings Sidebar */}
                   <div className="w-64 border-r border-border bg-muted/10">
-                    <DialogHeader className="p-6 pb-4">
-                      <DialogTitle className="text-lg font-semibold">Settings</DialogTitle>
-                    </DialogHeader>
+                                         <DialogHeader className="p-6 pb-4">
+                       <DialogTitle className="text-xl font-semibold">Settings</DialogTitle>
+                     </DialogHeader>
                     
                     <div className="px-3 space-y-1">
-                      {[
-                        { id: "general", label: "General", icon: Settings },
-                        { id: "notifications", label: "Notifications", icon: Bell },
-                        { id: "personalization", label: "Personalization", icon: Palette },
-                        { id: "apps", label: "Connected apps", icon: Smartphone },
-                        { id: "data", label: "Data controls", icon: Database },
-                        { id: "security", label: "Security", icon: Shield },
-                        { id: "account", label: "Account", icon: User }
-                      ].map((tab) => (
+                                             {[
+                         { id: "general", label: "General", icon: Settings },
+                         { id: "notifications", label: "Notifications", icon: Bell },
+                         { id: "personalization", label: "Personalization", icon: Palette },
+                         { id: "apps", label: "Connected apps", icon: Smartphone },
+                         { id: "data", label: "Data controls", icon: Database },
+                         { id: "security", label: "Security", icon: Shield },
+                         { id: "billing", label: "Billing", icon: CreditCard },
+                         { id: "account", label: "Account", icon: User }
+                       ].map((tab) => (
                         <Button
                           key={tab.id}
                           variant="ghost"
@@ -532,39 +544,46 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
                     {activeSettingsTab === "personalization" && (
                       <div className="p-6">
                         <h2 className="text-xl font-semibold mb-6">Personalization</h2>
-                        <p className="text-muted-foreground">Personalization settings coming soon...</p>
+                        <p className="text-sm text-muted-foreground">Personalization settings coming soon...</p>
                       </div>
                     )}
                     
                     {activeSettingsTab === "apps" && (
                       <div className="p-6">
                         <h2 className="text-xl font-semibold mb-6">Connected apps</h2>
-                        <p className="text-muted-foreground">No connected apps yet.</p>
+                        <p className="text-sm text-muted-foreground">No connected apps yet.</p>
                       </div>
                     )}
                     
                     {activeSettingsTab === "security" && (
                       <div className="p-6">
                         <h2 className="text-xl font-semibold mb-6">Security</h2>
-                        <p className="text-muted-foreground">Security settings coming soon...</p>
+                        <p className="text-sm text-muted-foreground">Security settings coming soon...</p>
                       </div>
                     )}
                     
-                    {activeSettingsTab === "account" && (
-                      <div className="p-6">
-                        <h2 className="text-xl font-semibold mb-6">Account</h2>
-                        <div className="space-y-4">
-                          <div>
-                            <label className="text-sm font-medium">Email</label>
-                            <p className="text-sm text-muted-foreground">shanchoyzone@gmail.com</p>
-                          </div>
-                          <div>
-                            <label className="text-sm font-medium">Plan</label>
-                            <p className="text-sm text-muted-foreground">Free</p>
-                          </div>
+                                                              {activeSettingsTab === "billing" && (
+                        <div className="p-6">
+                          <h2 className="text-xl font-semibold mb-6">Billing</h2>
+                          <p className="text-sm text-muted-foreground">Billing settings coming soon...</p>
                         </div>
-                      </div>
-                    )}
+                      )}
+                     
+                     {activeSettingsTab === "account" && (
+                       <div className="p-6">
+                         <h2 className="text-xl font-semibold mb-6">Account</h2>
+                         <div className="space-y-4">
+                           <div>
+                             <label className="text-sm font-medium">Email</label>
+                             <p className="text-sm text-muted-foreground">shanchoyzone@gmail.com</p>
+                           </div>
+                           <div>
+                             <label className="text-sm font-medium">Plan</label>
+                             <p className="text-sm text-muted-foreground">Free</p>
+                           </div>
+                         </div>
+                       </div>
+                     )}
                   </div>
                 </div>
               </DialogContent>

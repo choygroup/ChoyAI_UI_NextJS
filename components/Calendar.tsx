@@ -222,9 +222,9 @@ export function Calendar({ onMenuToggle }: CalendarProps) {
   );
 
   return (
-    <div className="flex-1 flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full w-full">
       {/* Top Bar */}
-      <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="flex items-center justify-between p-6 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center space-x-4">
           <h1 className="text-2xl font-bold">Calendar</h1>
         </div>
@@ -264,7 +264,7 @@ export function Calendar({ onMenuToggle }: CalendarProps) {
       </div>
 
       {/* Calendar Content */}
-      <div className="flex-1 p-6 overflow-auto">
+      <div className="flex-1 p-6 overflow-auto w-full">
         {currentView.type === 'month' && renderMonthView()}
         {currentView.type === 'week' && renderWeekView()}
         {currentView.type === 'schedule' && renderScheduleView()}

@@ -78,7 +78,7 @@ interface NewsProps {
 
 export function News({ onMenuToggle }: NewsProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
+    <div className="flex flex-col min-h-screen bg-background text-foreground font-sans w-full">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
         <div className="flex items-center justify-between p-4">
@@ -161,8 +161,8 @@ export function News({ onMenuToggle }: NewsProps) {
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 p-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1600px] mx-auto">
+      <main className="flex-1 p-6 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
           {/* Left/Main Content Area */}
           <div className="lg:col-span-2 xl:col-span-3 space-y-6">
             <div className="flex justify-between items-center">

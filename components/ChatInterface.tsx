@@ -102,9 +102,9 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
   };
 
   return (
-    <div className="flex h-screen bg-background text-foreground">
+    <div className="flex h-screen bg-background text-foreground w-full">
       {/* Sidebar */}
-      <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col">
+      <aside className="w-80 bg-background border-r border-border flex-shrink-0 flex flex-col">
         {/* Sidebar Header */}
         <div className="px-0 py-4 border-b border-border">
           <div className="flex items-center justify-between">
@@ -164,9 +164,9 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
       </aside>
 
       {/* Main Chat Area */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex items-center justify-between p-6 border-b border-border">
           <div className="flex items-center space-x-3">
             <Avatar className="size-10">
               <AvatarImage src={selectedPersona.avatar} />
@@ -246,8 +246,8 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
         </div>
 
         {/* Chat Messages */}
-        <div className="flex-1 p-6">
-          <div className="max-w-4xl mx-auto h-full flex flex-col">
+        <div className="flex-1 p-6 w-full">
+          <div className="h-full flex flex-col w-full">
             {/* Welcome Message */}
             <div className="flex-1 flex flex-col items-center justify-center text-center space-y-6">
               <div className="flex items-center space-x-4 mb-6">

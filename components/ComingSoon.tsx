@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { Menu, Clock, Sparkles, ArrowLeft, Calendar, Cloud, Mail, MessageCircle, Share2, DollarSign, FolderKanban, TrendingUp, Phone, Globe, StickyNote, Newspaper } from "lucide-react";
+import { Menu, Clock, Sparkles, Calendar, Cloud, Mail, MessageCircle, Share2, DollarSign, FolderKanban, TrendingUp, Phone, Globe, StickyNote, Newspaper } from "lucide-react";
 import { Card } from "./ui/card";
 
 interface ComingSoonProps {
@@ -73,15 +73,7 @@ export function ComingSoon({ onMenuToggle, title, description }: ComingSoonProps
             </div>
           </Card>
           
-          {/* Back to Chat Button */}
-          <Button 
-            variant="outline" 
-            className="mt-8 border-border text-foreground hover:bg-accent/10"
-            onClick={() => window.history.back()}
-          >
-            <ArrowLeft className="size-4 mr-2" />
-            Back to Chat
-          </Button>
+
         </div>
       </div>
     </div>

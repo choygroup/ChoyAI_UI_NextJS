@@ -99,9 +99,9 @@ export function Notes({ onMenuToggle }: NotesProps) {
   const [view, setView] = useState<'list' | 'card'>("list");
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen bg-background text-foreground w-full">
       {/* Sidebar */}
-      <aside className="w-64 bg-background border-r border-border flex-shrink-0 flex flex-col">
+      <aside className="w-80 bg-background border-r border-border flex-shrink-0 flex flex-col">
         <div className="p-4 border-b border-border">
           <Input placeholder="Search" className="bg-background border-border text-foreground" />
           <Button className="w-full mt-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground border-border" variant="secondary">
@@ -131,9 +131,9 @@ export function Notes({ onMenuToggle }: NotesProps) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-4 border-b border-border bg-background">
+        <div className="flex items-center justify-between p-6 border-b border-border bg-background">
           <div className="flex items-center space-x-3">
             <h1 className="text-2xl font-bold text-foreground">Notes</h1>
           </div>
@@ -145,8 +145,8 @@ export function Notes({ onMenuToggle }: NotesProps) {
         </div>
 
         {/* Main Area */}
-        <div className="flex-1 p-6">
-          <div className="max-w-[1600px] mx-auto">
+        <div className="flex-1 p-6 w-full">
+          <div className="w-full">
           {view === 'list' ? (
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm text-left border-collapse">

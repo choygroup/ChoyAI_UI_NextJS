@@ -97,7 +97,7 @@ function MainApp() {
           sidebarOpen ? 'ml-80' : 'ml-16'
         }`}>
           <div className="h-screen overflow-y-auto">
-            <div className="container mx-auto h-full">
+            <div className="h-full w-full">
               {renderContent()}
             </div>
           </div>
