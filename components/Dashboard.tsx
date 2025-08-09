@@ -377,7 +377,7 @@ export function Dashboard({ onMenuToggle }: DashboardProps) {
           if (savedOrder) {
             const reorderedCards = savedIds.map((id: string) => 
               defaultCards.find(card => card.id === id)
-            ).filter(Boolean) as DashboardCard[];
+            ).filter((card: DashboardCard | undefined): card is DashboardCard => card !== undefined);
             
             // Add any missing cards (in case new cards were added)
             const missingCards = defaultCards.filter(card => 
