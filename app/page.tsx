@@ -94,7 +94,7 @@ function MainApp() {
         
         {/* Main Content */}
         <div className={`flex-1 min-w-0 transition-all duration-300 ${
-          sidebarOpen ? 'ml-80' : 'ml-16'
+          sidebarOpen ? 'ml-80' : 'ml-20'
         }`}>
           <div className="h-screen overflow-y-auto">
             <div className="h-full w-full">

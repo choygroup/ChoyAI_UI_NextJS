@@ -2,7 +2,8 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Menu, Search, Sun, Cloud, CloudRain, Star, Film, Clock, Calendar, ChevronRight, Newspaper } from "lucide-react";
+import { Menu, Search, Sun, Cloud, CloudRain, Star, Film, Clock, Calendar, ChevronRight, Newspaper, Mic, MicOff } from "lucide-react";
+import { useState } from "react";
 
 // --- MOCK DATA ---
 const navLinks = ["Home", "Local", "World", "Business", "Finance", "Technology", "Sports", "Entertainment", "Science"];
@@ -17,12 +18,12 @@ const cryptoPrices = [
 ];
 
 const weatherData = {
-  current: { temp: "24°", icon: Sun },
-  cities: ["Dhaka", "Mumbai", "Tokyo", "New York"],
+  current: { temp: "24°C", icon: Sun, condition: "Sunny" },
+  city: "Dhaka",
   forecast: [
-    { day: "Wed", temp: "18°", icon: Cloud },
-    { day: "Thu", temp: "22°", icon: CloudRain },
-    { day: "Fri", temp: "25°", icon: Sun },
+    { day: "Today", temp: "24°C", icon: Sun, condition: "Sunny" },
+    { day: "Tomorrow", temp: "26°C", icon: Cloud, condition: "Cloudy" },
+    { day: "Wed", temp: "28°C", icon: CloudRain, condition: "Rainy" },
   ],
 };
 
@@ -77,15 +78,75 @@ interface NewsProps {
 }
 
 export function News({ onMenuToggle }: NewsProps) {
+  const [isListening, setIsListening] = useState(false);
+
+  const toggleVoiceAI = () => {
+    setIsListening(!isListening);
+    // Here you would integrate with actual voice recognition API
+    console.log(isListening ? "Stopping voice AI" : "Starting voice AI");
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans w-full">
+      {/* Crypto Ticker */}
+      <div className="bg-accent/50 flex items-center p-2 border-b border-border overflow-hidden">
+          <span className="bg-destructive text-destructive-foreground text-xs font-semibold px-4 py-2 rounded-r-full -ml-2 mr-4 shrink-0">
+              Crypto Price
+          </span>
+          <div className="flex-grow overflow-hidden whitespace-nowrap">
+              <div className="flex animate-scroll space-x-6">
+                  {[...cryptoPrices, ...cryptoPrices].map((crypto, index) => (
+                  <div key={`crypto-${index}`} className="flex items-center space-x-2 text-xs shrink-0">
+                      <span className="font-bold text-lg text-yellow-400">B</span>
+                      <div>
+                          <p className="text-muted-foreground">{crypto.name}</p>
+                          <p className="font-semibold text-foreground">{crypto.price}</p>
+                      </div>
+                      <div className={`text-xs font-semibold px-2 py-1 rounded-md ${crypto.isUp ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                          {crypto.isUp ? '▲' : '▼'} {crypto.change}
+                      </div>
+                  </div>
+                  ))}
+              </div>
+          </div>
+      </div>
+
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-        <div className="flex items-center justify-between p-4">
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border h-16">
+        <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center space-x-2">
             <div>
                 <h1 className="text-lg font-semibold text-foreground">Choy News</h1>
-                <p className="text-xs text-muted-foreground">Sunday, Jun 25, 2024</p>
+                <p className="text-sm text-muted-foreground">Sunday, Jun 25, 2024</p>
+            </div>
+            {/* Voice AI Button */}
+            <div className="flex items-center space-x-2 ml-4">
+              <button
+                onClick={toggleVoiceAI}
+                className={`relative p-2 rounded-full transition-all duration-300 ${
+                  isListening 
+                    ? 'bg-blue-500/20 text-blue-400 shadow-lg shadow-blue-500/25' 
+                    : 'bg-gray-700/60 text-gray-300 hover:bg-gray-600/60 hover:text-white'
+                }`}
+                title={isListening ? "Stop listening" : "Start voice AI"}
+              >
+                {isListening ? (
+                  <div className="relative">
+                    <MicOff className="size-5" />
+                    {/* Animated listening rings */}
+                    <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/30"></div>
+                    <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/20" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/10" style={{ animationDelay: '1s' }}></div>
+                  </div>
+                ) : (
+                  <Mic className="size-5" />
+                )}
+              </button>
+              {isListening && (
+                <span className="text-xs text-blue-400 font-medium animate-pulse">
+                  Listening...
+                </span>
+              )}
             </div>
           </div>
 
@@ -100,19 +161,9 @@ export function News({ onMenuToggle }: NewsProps) {
           </div>
 
           <div className="hidden sm:flex items-center space-x-2">
-            <p className="text-3xl font-bold text-foreground">{weatherData.current.temp}</p>
-            <weatherData.current.icon className="size-6 text-yellow-400" />
-            <div className="text-xs">
-                <p className="text-foreground">{weatherData.cities.join(' • ')}</p>
-                <div className="flex space-x-3 mt-1">
-                    {weatherData.forecast.map((day, index) => (
-                        <div key={index} className="flex items-center">
-                            <day.icon className="size-4 mr-1 text-muted-foreground" />
-                            <span className="text-foreground">{day.temp}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <p className="text-foreground font-medium">{weatherData.city} {weatherData.current.temp}</p>
+            <weatherData.current.icon className="size-4 text-yellow-400" />
+            <p className="text-foreground font-medium">{weatherData.current.condition}</p>
           </div>
         </div>
 
@@ -136,40 +187,19 @@ export function News({ onMenuToggle }: NewsProps) {
             </div>
         </nav>
 
-        {/* Crypto Ticker */}
-        <div className="bg-accent/50 flex items-center p-2 border-b border-border overflow-hidden">
-            <span className="bg-destructive text-destructive-foreground text-xs font-semibold px-4 py-2 rounded-r-full -ml-2 mr-4 shrink-0">
-                Crypto Price
-            </span>
-            <div className="flex-grow overflow-hidden whitespace-nowrap">
-                <div className="flex animate-scroll space-x-6">
-                    {[...cryptoPrices, ...cryptoPrices].map((crypto, index) => (
-                    <div key={`crypto-${index}`} className="flex items-center space-x-2 text-xs shrink-0">
-                        <span className="font-bold text-lg text-yellow-400">B</span>
-                        <div>
-                            <p className="text-muted-foreground">{crypto.name}</p>
-                            <p className="font-semibold text-foreground">{crypto.price}</p>
-                        </div>
-                        <div className={`text-xs font-semibold px-2 py-1 rounded-md ${crypto.isUp ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                            {crypto.isUp ? '▲' : '▼'} {crypto.change}
-                        </div>
-                    </div>
-                    ))}
-                </div>
-            </div>
-        </div>
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 p-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
-          {/* Left/Main Content Area */}
-          <div className="lg:col-span-2 xl:col-span-3 space-y-6">
-            <div className="flex justify-between items-center">
-                <h2 className="text-lg font-semibold text-foreground flex items-center">
-                    Latest News <ChevronRight className="size-5 mt-1" />
-                </h2>
-            </div>
+      <main className="flex-1 w-full">
+        <div className="p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+            {/* Left/Main Content Area */}
+            <div className="lg:col-span-2 xl:col-span-3 space-y-6">
+              <div className="flex justify-between items-center">
+                  <h2 className="text-lg font-semibold text-foreground flex items-center">
+                      Latest News <ChevronRight className="size-5 mt-1" />
+                  </h2>
+              </div>
           
             {/* Top Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -216,10 +246,10 @@ export function News({ onMenuToggle }: NewsProps) {
                 ))}
             </div>
 
-        </div>
+            </div>
 
-        {/* Right Sidebar */}
-        <div className="lg:col-span-1 space-y-6">
+            {/* Right Sidebar */}
+            <div className="lg:col-span-1 space-y-6">
           {/* Live Scores */}
           <Card className="bg-card border-border p-4 rounded-lg relative">
             <div className="flex justify-between items-center mb-4">
@@ -288,6 +318,7 @@ export function News({ onMenuToggle }: NewsProps) {
               ))}
             </div>
           </Card>
+            </div>
           </div>
         </div>
       </main>

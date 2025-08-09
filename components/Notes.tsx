@@ -133,7 +133,7 @@ export function Notes({ onMenuToggle }: NotesProps) {
       {/* Main Content */}
       <main className="flex-1 flex flex-col w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-16">
           <div className="flex items-center space-x-3">
             <h1 className="text-lg font-semibold text-foreground">Notes</h1>
           </div>

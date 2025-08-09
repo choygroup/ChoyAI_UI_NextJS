@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -34,7 +34,11 @@ import {
   Shield,
   Database,
   Smartphone,
-  CreditCard
+  CreditCard,
+  Mic,
+  MicOff,
+  Brain,
+  Zap
 } from "lucide-react";
 
 // Core AI Section
@@ -170,12 +174,83 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentView }: SidebarProps) {
   const allItems = [...coreAIItems, ...productivityItems, ...businessFinanceItems, ...aiUtilityItems];
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  
+  // Voice AI state
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [hasWelcomed, setHasWelcomed] = useState(false);
   
   // Settings state
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [activeSettingsTab, setActiveSettingsTab] = useState("general");
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
+  
+  const toggleVoiceAI = () => {
+    setIsListening(!isListening);
+    // Here you would integrate with actual voice recognition API
+    console.log(isListening ? "Stopping voice AI" : "Starting voice AI");
+  };
+
+  // Voice welcome function
+  const speakWelcome = () => {
+    if (user && !hasWelcomed) {
+      const welcomeMessage = `Welcome ${user.name}, how can I assist you?`;
+      
+      // Use Web Speech API for text-to-speech
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(welcomeMessage);
+        utterance.rate = 0.9; // Slightly slower for better clarity
+        utterance.pitch = 1.1; // Slightly higher pitch
+        utterance.volume = 0.8; // Good volume level
+        
+        // Try to use a more natural voice if available
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(voice => 
+          voice.name.includes('Samantha') || 
+          voice.name.includes('Alex') || 
+          voice.name.includes('Google')
+        );
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+        }
+        
+        // Show speaking animation
+        setIsSpeaking(true);
+        
+        // Handle speech events
+        utterance.onstart = () => {
+          console.log("Welcome message started speaking");
+        };
+        
+        utterance.onend = () => {
+          console.log("Welcome message finished speaking");
+          setIsSpeaking(false);
+        };
+        
+        utterance.onerror = () => {
+          console.log("Welcome message error");
+          setIsSpeaking(false);
+        };
+        
+        speechSynthesis.speak(utterance);
+        setHasWelcomed(true);
+        console.log("Welcome message spoken:", welcomeMessage);
+      }
+    }
+  };
+
+  // Welcome effect when user logs in
+  useEffect(() => {
+    if (user && !hasWelcomed) {
+      // Small delay to ensure UI is ready
+      const timer = setTimeout(() => {
+        speakWelcome();
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [user, hasWelcomed]);
   
   const [settings, setSettings] = useState({
     theme: "dark",
@@ -201,10 +276,10 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
         <Button
           key={item.label}
           variant="ghost"
-          className={`w-full ${isOpen ? 'justify-start' : 'justify-center'} text-left h-auto py-2 px-3 transition-colors duration-200 ${
+          className={`w-full ${isOpen ? 'justify-start' : 'justify-center'} text-left h-auto py-2 px-3 transition-all duration-200 rounded-lg ${
             isCurrentlyActive
-              ? "bg-black/40 text-foreground"
-              : "hover:bg-black/30 hover:text-foreground"
+              ? "bg-black/40 text-foreground border-l-4 border-gray-600 shadow-sm"
+              : "hover:bg-gray-700/60 hover:text-foreground hover:border-l-4 hover:border-gray-400 hover:shadow-md hover:scale-[1.02] hover:-translate-y-0.5"
           }`}
           onClick={() => onNavigate(item)}
           title={!isOpen ? item.label : undefined}
@@ -232,7 +307,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
         <div className={`
           relative h-full bg-zinc-950 border-r border-border
           transition-all duration-300 ease-in-out
-          ${isOpen ? 'w-80' : 'w-16'}
+          ${isOpen ? 'w-80' : 'w-20'}
         `}>
 
 
@@ -240,34 +315,67 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
           <div className="flex flex-col h-full">
             {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
-            <div className="flex items-center space-x-3 min-w-0">
+            <div className={`${isOpen ? 'flex items-center space-x-3 min-w-0' : 'flex flex-col items-center space-y-2'}`}>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={onToggle}
-                className="text-foreground hover:bg-accent/10 flex-shrink-0"
+                className="text-foreground hover:bg-gray-700/60 hover:scale-110 transition-all duration-200 rounded-lg flex-shrink-0"
               >
                 <Menu className="size-4" />
               </Button>
+              {!isOpen && (
+                <button
+                  onClick={toggleVoiceAI}
+                  className={`relative p-2 rounded-full transition-all duration-300 ${
+                    isListening || isSpeaking
+                      ? 'bg-blue-500/20 text-blue-400 shadow-lg shadow-blue-500/25' 
+                      : 'bg-gray-700/60 text-gray-300 hover:bg-gray-600/60 hover:text-white'
+                  }`}
+                  title={isListening ? "Stop listening" : isSpeaking ? "AI is speaking" : "Start voice AI"}
+                >
+                  {isListening || isSpeaking ? (
+                    <div className="relative">
+                      <Brain className="size-4" />
+                      {/* Animated listening rings */}
+                      <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/30"></div>
+                      <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/20" style={{ animationDelay: '0.5s' }}></div>
+                      <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/10" style={{ animationDelay: '1s' }}></div>
+                    </div>
+                  ) : (
+                    <Brain className="size-4" />
+                  )}
+                </button>
+              )}
               {isOpen && (
                 <>
-                  <div className="size-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MessageSquare className="size-4 text-foreground" />
-              </div>
-                  <span className="text-foreground font-semibold">Choy AI</span>
+                  <span className="text-foreground font-bold text-xl">Choy AI</span>
+                  {/* Voice AI Button */}
+                  <button
+                    onClick={toggleVoiceAI}
+                    className={`relative p-3 rounded-full transition-all duration-300 ml-2 ${
+                      isListening || isSpeaking
+                        ? 'bg-blue-500/20 text-blue-400 shadow-lg shadow-blue-500/25' 
+                        : 'bg-gray-700/60 text-gray-300 hover:bg-gray-600/60 hover:text-white'
+                    }`}
+                    title={isListening ? "Stop listening" : isSpeaking ? "AI is speaking" : "Start voice AI"}
+                  >
+                    {isListening || isSpeaking ? (
+                      <div className="relative">
+                        <Brain className="size-5" />
+                        {/* Animated listening rings */}
+                        <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/30"></div>
+                        <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/20" style={{ animationDelay: '0.5s' }}></div>
+                        <div className="absolute inset-0 rounded-full animate-ping bg-blue-400/10" style={{ animationDelay: '1s' }}></div>
+                      </div>
+                    ) : (
+                      <Brain className="size-5" />
+                    )}
+                  </button>
                 </>
               )}
             </div>
-            {isOpen && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onToggle}
-                className="text-foreground hover:bg-accent/10 flex-shrink-0"
-            >
-              <X className="size-4" />
-            </Button>
-            )}
+
           </div>
 
           {/* Navigation */}
@@ -276,7 +384,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             <div className={isOpen ? "px-4" : "px-2"}>
               {isOpen && (
                 <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 Core AI
+                ● Core AI
               </div>
               )}
               <nav className="space-y-0.5 mb-2">
@@ -290,7 +398,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             <div className={isOpen ? "px-4" : "px-2"}>
               {isOpen && (
                 <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 Productivity
+                ● Productivity
               </div>
               )}
               <nav className="space-y-0.5 mb-2">
@@ -304,7 +412,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             <div className={isOpen ? "px-4" : "px-2"}>
               {isOpen && (
                 <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 Business &amp; Finance
+                ● Business &amp; Finance
               </div>
               )}
               <nav className="space-y-0.5 mb-2">
@@ -318,7 +426,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
             <div className={isOpen ? "px-4" : "px-2"}>
               {isOpen && (
                 <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                🔹 AI Utility Agents
+                ● AI Utility Agents
               </div>
               )}
               <nav className="space-y-0.5 mb-2">
@@ -334,7 +442,7 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
               <DialogTrigger asChild>
             <Button
               variant="ghost"
-                  className={`w-full ${isOpen ? 'justify-start' : 'justify-center'} text-foreground p-3 rounded-lg hover:bg-transparent`}
+                  className={`w-full ${isOpen ? 'justify-start' : 'justify-center'} text-foreground py-5 px-4 rounded-lg hover:bg-gray-700/60 transition-all duration-200`}
                   title={!isOpen ? "Shanchoy Noor - Settings" : undefined}
             >
                   <Avatar className={`${isOpen ? 'mr-3' : ''} size-10 ring-2 ring-border`}>
@@ -385,8 +493,10 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
                         <Button
                           key={tab.id}
                           variant="ghost"
-                          className={`w-full justify-start text-sm h-10 ${
-                            activeSettingsTab === tab.id ? "bg-accent text-accent-foreground" : ""
+                          className={`w-full justify-start text-sm h-10 transition-all duration-200 rounded-lg ${
+                            activeSettingsTab === tab.id 
+                              ? "bg-black/40 text-foreground border-l-4 border-gray-600 shadow-sm" 
+                              : "hover:bg-gray-700/60 hover:border-l-4 hover:border-gray-400 hover:shadow-md hover:scale-[1.02]"
                           }`}
                           onClick={() => setActiveSettingsTab(tab.id)}
                         >
@@ -399,14 +509,14 @@ export function Sidebar({ isOpen, onToggle, onNavigate, onProfileClick, currentV
                     <Separator className="my-4 mx-3" />
                     
                     <div className="px-3 space-y-1">
-                      <Button variant="ghost" className="w-full justify-start text-sm h-10">
+                      <Button variant="ghost" className="w-full justify-start text-sm h-10 transition-all duration-200 rounded-lg hover:bg-gray-700/60 hover:scale-[1.02]">
                         <HelpCircle className="size-4 mr-3" />
                         Help
                         <ChevronDown className="size-4 ml-auto" />
                       </Button>
                       <Button 
                         variant="ghost" 
-                        className="w-full justify-start text-sm h-10 text-red-400 hover:text-red-300 hover:bg-red-950/20"
+                        className="w-full justify-start text-sm h-10 text-red-400 hover:text-foreground hover:bg-gray-700/60 hover:border-l-4 hover:border-gray-400 hover:shadow-md hover:scale-[1.02] transition-all duration-200 rounded-lg"
                         onClick={() => setLogoutDialogOpen(true)}
                       >
                         <LogOut className="size-4 mr-3" />

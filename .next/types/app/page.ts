@@ -1,4 +1,4 @@
-// File: D:\D-Programming\uiux-aug8\ChoyAI_UI_NextJS\app\page.tsx
+// File: /Users/macbookpr0/Downloads/uiux/ChoyAI_UI_NextJS/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

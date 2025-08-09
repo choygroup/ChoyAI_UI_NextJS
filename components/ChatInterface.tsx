@@ -119,10 +119,10 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
                 {personas.map((persona) => (
                 <div
                   key={persona.id}
-                  className={`flex items-center space-x-3 p-4 cursor-pointer transition-colors ${
+                  className={`flex items-center space-x-3 p-4 cursor-pointer transition-all duration-200 rounded-lg ${
                     selectedPersona.id === persona.id
-                      ? 'bg-accent/20'
-                      : 'hover:bg-accent/10'
+                      ? 'bg-black/40 border-l-4 border-gray-600 shadow-sm'
+                      : 'hover:bg-black/30 hover:border-l-4 hover:border-gray-500 hover:shadow-md hover:scale-[1.02] hover:-translate-y-0.5'
                   }`}
                   onClick={() => setSelectedPersona(persona)}
                 >
@@ -166,7 +166,7 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
       {/* Main Chat Area */}
       <main className="flex-1 flex flex-col w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between p-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-16">
           <div className="flex items-center space-x-3">
             <Avatar className="size-8">
               <AvatarImage src={selectedPersona.avatar} />
@@ -175,26 +175,26 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
               </AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-lg font-semibold">{selectedPersona.name}</h1>
+              <h1 className="text-base font-semibold">{selectedPersona.name}</h1>
               <p className="text-xs text-muted-foreground">Online</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm" title="Audio call">
+            <Button variant="ghost" size="sm" title="Audio call" className="hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-lg">
               <Phone className="size-4" />
             </Button>
-            <Button variant="ghost" size="sm" title="Video call">
+            <Button variant="ghost" size="sm" title="Video call" className="hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-lg">
               <Video className="size-4" />
             </Button>
-            <Button variant="ghost" size="sm" title="Screen share">
+            <Button variant="ghost" size="sm" title="Screen share" className="hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-lg">
               <Monitor className="size-4" />
             </Button>
-            <Button variant="ghost" size="sm" title="Search">
+            <Button variant="ghost" size="sm" title="Search" className="hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-lg">
               <Search className="size-4" />
             </Button>
             <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" title="More options">
+                <Button variant="ghost" size="sm" title="More options" className="hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-lg">
                   <MoreHorizontal className="size-5" />
                 </Button>
               </DropdownMenuTrigger>
@@ -219,10 +219,7 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
                   <Heart className="size-4 mr-2" />
                   Add to favorites
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <X className="size-4 mr-2" />
-                  Close chat
-                </DropdownMenuItem>
+
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <ThumbsDown className="size-4 mr-2" />
@@ -283,7 +280,7 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
              <div className="mt-6">
                <div className="relative bg-secondary rounded-3xl border border-border/50 shadow-lg backdrop-blur-sm">
                  <div className="flex items-center px-4 py-3">
-                   <Button variant="ghost" size="sm" className="size-8 p-0 mr-2">
+                   <Button variant="ghost" size="sm" className="size-8 p-0 mr-2 hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-full">
                      <Plus className="size-5 text-muted-foreground" />
                    </Button>
                    <Input
@@ -294,16 +291,16 @@ export function ChatInterface({ onMenuToggle }: ChatInterfaceProps) {
                      className="flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-foreground placeholder:text-muted-foreground"
                    />
                                         <div className="flex items-center space-x-2 ml-2">
-                       <Button variant="ghost" size="sm" className="size-8 p-0">
+                       <Button variant="ghost" size="sm" className="size-8 p-0 hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-full">
                          <Paperclip className="size-4 text-muted-foreground" />
                        </Button>
-                       <Button variant="ghost" size="sm" className="size-8 p-0">
+                       <Button variant="ghost" size="sm" className="size-8 p-0 hover:bg-black/30 hover:scale-110 transition-all duration-200 rounded-full">
                          <Mic className="size-4 text-muted-foreground" />
                        </Button>
                        <Button 
                          onClick={handleSendMessage}
                          size="sm" 
-                         className="size-8 p-0 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
+                         className="size-8 p-0 bg-primary hover:bg-primary/90 hover:scale-110 transition-all duration-200 text-primary-foreground rounded-full"
                          disabled={!message.trim()}
                        >
                          <Send className="size-4" />
